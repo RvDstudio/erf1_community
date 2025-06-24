@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import TopBar from "@/components/header/TopBar";
-import MainHeader from "@/components/header/MainHeader";
-import NavigationBar from "@/components/header/NavigationBar";
+import TopBar from "@/components/frontpage/header/TopBar";
+import MainHeader from "@/components/frontpage/header/MainHeader";
+import NavigationBar from "@/components/frontpage/header/NavigationBar";
 
 const Header = () => {
   const [hideTopBar, setHideTopBar] = useState(false);

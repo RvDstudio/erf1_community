@@ -1,4 +1,4 @@
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Breadcrumbs } from "@/components/dashboard/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,

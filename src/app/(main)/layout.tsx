@@ -1,7 +1,7 @@
 // src\app\(site)\layout.tsx
-import Header from "@/components/header/Header";
-import SmallHeader from "@/components/header/SmallHeader";
-import Footer from "@/components/footer/Footer";
+import Header from "@/components/frontpage/header/Header";
+import SmallHeader from "@/components/frontpage/header/SmallHeader";
+import Footer from "@/components/frontpage/footer/Footer";
 
 export default function SiteLayout({
   children,
@@ -19,7 +19,9 @@ export default function SiteLayout({
       <div className="md:hidden">
         <SmallHeader />
       </div>
-      {children}
+      <div className="pt-[160px] md:pt-[180px]">
+        {children}
+      </div>
       <Footer />
     </>
   );

@@ -1,4 +1,4 @@
-import { DashboardLayoutClient } from "@/components/DashboardLayoutClient";
+import { DashboardLayoutClient } from "@/components/dashboard/DashboardLayoutClient";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";

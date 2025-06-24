@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import ShoppingCart from "@/components/header/ShoppingCart";
-import WishlistIcon from "@/components/header/WishlistIcon";
+import ShoppingCart from "@/components/frontpage/header/ShoppingCart";
+import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
 import {
   User,
   Menu,

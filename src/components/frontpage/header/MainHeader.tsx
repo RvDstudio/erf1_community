@@ -2,12 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Search, Phone, Armchair } from "lucide-react";
-import ShoppingCart from "@/components/header/ShoppingCart";
+import ShoppingCart from "@/components/frontpage/header/ShoppingCart";
 import Link from "next/link";
-import SmallHeader from "@/components/header/SmallHeader";
-import TopBar from "@/components/header/TopBar";
+import SmallHeader from "@/components/frontpage/header/SmallHeader";
+import TopBar from "@/components/frontpage/header/TopBar";
 import NavigationBar from "./NavigationBar";
-import WishlistIcon from "@/components/header/WishlistIcon";
+import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
 
 const MainHeader = () => {
   const [showMain, setShowMain] = useState(true);

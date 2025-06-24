@@ -1,5 +1,5 @@
 import React from "react";
-import MenuItem from "@/components/MenuItem";
+import MenuItem from "@/components/dashboard/MenuItem";
 import { navigationData } from "@/data/navigation";
 import { Tractor } from "lucide-react";
 import { NavigationSection } from "@/types/navigation";
