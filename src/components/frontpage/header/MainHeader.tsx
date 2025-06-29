@@ -1,19 +1,36 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Search, Phone, Armchair } from "lucide-react";
+import { Search, Phone, Tractor } from "lucide-react";
 import ShoppingCart from "@/components/frontpage/header/ShoppingCart";
 import Link from "next/link";
 import SmallHeader from "@/components/frontpage/header/SmallHeader";
 import TopBar from "@/components/frontpage/header/TopBar";
 import NavigationBar from "./NavigationBar";
 import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
+import { useSession } from '@/hooks/use-session'
+import dynamic from 'next/dynamic'
+const UserAvatar = dynamic(() => import('@/components/UserAvatar'), { ssr: false })
 
 const MainHeader = () => {
   const [showMain, setShowMain] = useState(true);
   const [showSmall, setShowSmall] = useState(false);
   const [isShrunk, setIsShrunk] = useState(false);
   const lastScrollY = useRef(0);
+  const { session, isLoading } = useSession()
+  console.log('HEADER SESSION:', session)
+  let name = ''
+  let image = undefined
+  let isLoggedIn = false
+  type UserObj = { name?: string; image?: string }
+  if (session && typeof session === 'object' && 'data' in session && session.data && typeof session.data === 'object') {
+    const data = session.data as { user?: UserObj }
+    if (data.user && typeof data.user === 'object') {
+      name = data.user.name || ''
+      image = data.user.image || undefined
+      isLoggedIn = !!name
+    }
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -62,7 +79,7 @@ const MainHeader = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center py-4">
               <div
-                className={`bg-[#AB7C41] rounded-full mr-2 transition-all duration-300 ${
+                className={`bg-[#6699cc] rounded-full mr-2 transition-all duration-300 ${
                   isShrunk ? "p-1" : "p-2"
                 }`}
               >
@@ -71,7 +88,7 @@ const MainHeader = () => {
                     isShrunk ? "text-lg" : "text-xl"
                   }`}
                 >
-                  <Armchair className="h-6 w-6 text-white" />
+                  <Tractor className="h-6 w-6 text-white" />
                 </div>
               </div>
               <div>
@@ -106,27 +123,36 @@ const MainHeader = () => {
                     placeholder="Enter keywords to search..."
                     className="w-full h-10 px-3 focus:outline-none bg-gray-800 text-[#BCBDC7]"
                   />
-                  <button className="bg-[#AB7C41] hover:bg-[#AB7C41]/80 text-white px-4 rounded-r-md cursor-pointer">
+                  <button className="bg-[#6699cc] hover:bg-[#6699cc]/80 text-white px-4 rounded-r-md cursor-pointer">
                     <Search className="h-5 w-5" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Call Us Section (always shown, no user logic) */}
-            <div className="flex items-center mr-4">
-              <div className="bg-gray-800 rounded-full p-3 mr-3">
-                <Phone className="h-6 w-6 text-white" />
+            {/* User or Call Us Section */}
+            {isLoading ? (
+              <div className="w-8 h-8 rounded-full bg-gray-400 animate-pulse mr-4" />
+            ) : isLoggedIn ? (
+              <div className="flex items-center mr-4 gap-2">
+                <UserAvatar name={name} image={image} />
+                <span className="text-white font-medium text-sm truncate max-w-[120px]">{name || '?'}</span>
               </div>
-              <div>
-                <div className="text-white text-xs font-bold">
-                  CALL US NOW:
+            ) : (
+              <div className="flex items-center mr-4">
+                <div className="bg-gray-800 rounded-full p-3 mr-3">
+                  <Phone className="h-6 w-6 text-white" />
                 </div>
-                <div className="text-white text-xs">
-                  TOLL FREE: 0123-456-789
+                <div>
+                  <div className="text-white text-xs font-bold">
+                    CALL US NOW:
+                  </div>
+                  <div className="text-white text-xs">
+                    TOLL FREE: 0123-456-789
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Wishlist Icon */}
             <WishlistIcon />

@@ -1,4 +1,4 @@
-import { Armchair } from "lucide-react";
+import { Tractor } from "lucide-react";
 import React from "react";
 
 function Footer() {
@@ -8,7 +8,7 @@ function Footer() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div className="text-[#6699cc] font-bold text-2xl dark:text-teal-300 flex items-center gap-2">
-              <Armchair className="h-6 w-6 text-white " />
+              <Tractor className="h-6 w-6 text-white " />
               Erf1 Community
             </div>
 

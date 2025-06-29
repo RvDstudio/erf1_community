@@ -7,7 +7,7 @@ import {
   User,
   Menu,
   Search,
-  Armchair,
+  Tractor,
 } from "lucide-react";
 import {
   Sheet,
@@ -18,8 +18,27 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import React from "react";
+import { useSession } from '@/hooks/use-session'
+import dynamic from 'next/dynamic'
+const UserAvatar = dynamic(() => import('@/components/UserAvatar'), { ssr: false })
+
+type UserObj = { name?: string; image?: string }
+function getUserFromSession(session: unknown): UserObj | undefined {
+  if (session && typeof session === 'object' && 'data' in session && session.data && typeof session.data === 'object') {
+    const data = session.data as { user?: UserObj }
+    if (data.user && typeof data.user === 'object') {
+      return data.user
+    }
+  }
+  return undefined
+}
 
 export default function SmallHeader() {
+  const { session, isLoading } = useSession()
+  const user = getUserFromSession(session)
+  const name = user?.name || '?'
+  const image = user?.image || undefined
+  const isLoggedIn = !!user?.name
   return (
     <div className="fixed top-0 left-0 right-0 md:static w-full z-50 bg-[#374c69]">
       <div className="container mx-auto">
@@ -46,8 +65,8 @@ export default function SmallHeader() {
             </Sheet>
 
             <Link href="/" className="flex items-center">
-              <div className="bg-[#AB7C41] rounded-full p-1 mr-2">
-                <Armchair className="h-6 w-6 text-white" />
+              <div className="bg-[#6699cc] rounded-full p-1 mr-2">
+                <Tractor className="h-6 w-6 text-white" />
               </div>
               <span className="text-white font-bold text-lg">Erf1 Community</span>
             </Link>
@@ -69,7 +88,7 @@ export default function SmallHeader() {
                 className="h-8 px-3 text-sm focus:outline-none bg-gray-800 text-gray-400 w-2/3"
               />
               {/* Search Button */}
-              <button className="bg-[#AB7C41] hover:bg-[#AB7C41]/80 text-white px-3 rounded-r-md cursor-pointer flex items-center justify-center">
+              <button className="bg-[#6699cc] hover:bg-[#6699cc]/80 text-white px-3 rounded-r-md cursor-pointer flex items-center justify-center">
                 <Search className="h-4 w-4" />
               </button>
             </div>
@@ -77,9 +96,18 @@ export default function SmallHeader() {
 
           {/* Icons on the right (always unauthenticated) */}
           <div className="flex items-center space-x-4">
-            <Link href="/login" className="text-white hover:text-gray-300">
-              <User className="h-5 w-5" />
-            </Link>
+            {isLoading ? (
+              <div className="w-8 h-8 rounded-full bg-gray-400 animate-pulse" />
+            ) : isLoggedIn ? (
+              <div className="flex items-center gap-2">
+                <UserAvatar name={name} image={image} />
+                <span className="text-white font-medium text-sm truncate max-w-[100px]">{name}</span>
+              </div>
+            ) : (
+              <Link href="/login" className="text-white hover:text-gray-300">
+                <User className="h-5 w-5" />
+              </Link>
+            )}
             <WishlistIcon />
             <ShoppingCart />
           </div>

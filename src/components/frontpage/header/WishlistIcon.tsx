@@ -3,10 +3,10 @@
 import React from "react";
 import { Heart } from "lucide-react";
 import Link from "next/link";
+import { useWishlistStore, WishlistItem } from "@/hooks/use-wishlist";
 
 export default function WishlistIcon() {
-  // Static value
-  const itemCount = 0;
+  const itemCount = useWishlistStore((state: { items: WishlistItem[] }) => state.items.length)
 
   return (
     <Link

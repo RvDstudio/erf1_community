@@ -5,10 +5,13 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "images.unsplash.com",
+        hostname: "grabit-react-next.maraviyainfotech.com",
       },
       {
         hostname: "lh3.googleusercontent.com",
+      },
+      {
+        hostname: "bbxbvkdtyrbquobhbhur.supabase.co",
       },
       {
         hostname: "github.com"

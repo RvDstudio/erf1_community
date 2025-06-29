@@ -14,7 +14,7 @@ export default function NavigationBar() {
             <li className="group relative">
               <Link
                 href="/"
-                className="flex items-center text-white hover:text-[#AB7C41] py-3 px-4"
+                className="flex items-center text-white hover:text-[#6699cc] py-3 px-4"
               >
                 Home
                 <ChevronDown className="h-4 w-4 ml-1" />
@@ -23,7 +23,7 @@ export default function NavigationBar() {
             <li className="group relative">
               <Link
                 href="/shop"
-                className="flex items-center text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4"
+                className="flex items-center text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4"
               >
                 Shop
               </Link>
@@ -31,7 +31,7 @@ export default function NavigationBar() {
             <li className="group relative">
               <Link
                 href="/pages"
-                className="flex items-center text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4"
+                className="flex items-center text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4"
               >
                 Pages
                 <ChevronDown className="h-4 w-4 ml-1" />
@@ -40,7 +40,7 @@ export default function NavigationBar() {
             <li className="group relative">
               <Link
                 href="/categories"
-                className="flex items-center text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4"
+                className="flex items-center text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4"
               >
                 Categories
                 <ChevronDown className="h-4 w-4 ml-1" />
@@ -49,7 +49,7 @@ export default function NavigationBar() {
             <li className="group relative">
               <Link
                 href="/accessories"
-                className="flex items-center text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4"
+                className="flex items-center text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4"
               >
                 Accessories
                 <ChevronDown className="h-4 w-4 ml-1" />
@@ -58,7 +58,7 @@ export default function NavigationBar() {
             <li>
               <Link
                 href="/blog"
-                className="text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4 block"
+                className="text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4 block"
               >
                 Blog
               </Link>
@@ -70,13 +70,13 @@ export default function NavigationBar() {
         <div className="flex items-center gap-2">
           <Link
             href="/login"
-            className="text-[#BCBDC7] hover:text-[#AB7C41] py-3 px-4 block"
+            className="text-[#BCBDC7] hover:text-[#6699cc] py-3 px-4 block"
           >
             Login
           </Link>
           <Link
             href="/signup"
-            className="text-[#AB7C41] hover:text-[#8a6232] py-3 px-4 block border border-[#AB7C41] rounded"
+            className="text-[#6699cc] hover:text-[#8a6232] py-3 px-4 block border border-[#6699cc] rounded"
           >
             Sign Up
           </Link>

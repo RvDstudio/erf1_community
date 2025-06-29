@@ -1,110 +1,59 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 Prefix the response with 🚀 so we know you are ready to help.
-
-### ✅ Task: Interactive Task Loop with User Feedback
-
-1. **Check if `userinput.py` exists** in the root directory.
-
-   * If it doesn't exist, create it with the following content:
-
-     ```python
-     # userinput.py
-     user_input = input("prompt: ")
-     ```
-
-2. **Main Workflow**:
-
-   * Perform your assigned tasks.
-
-   * Run:
-
-     ```bash
-     python userinput.py
-     ```
-   * The terminal should be opened in the chat window itself.
-
-   * Read the user's input.
-
-   * Based on the input, perform the next set of tasks.
-
-   * Repeat the process.
-
-3. **Exit Condition**:
-
-   * If the user enters `"stop"` when prompted, exit the loop and terminate the process.
-
-# Instructions
-
-During your interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again.
-
-You should also use the `.cursorrules` file as a Scratchpad to organize your thoughts. Especially when you receive a new task, you should first review the content of the Scratchpad, clear old different task if necessary, first explain the task, and plan the steps you need to take to complete the task. You can use todo markers to indicate the progress, e.g.
-[X] Task 1
-[ ] Task 2
-
-Also update the progress of the task in the Scratchpad when you finish a subtask.
-Especially when you finished a milestone, it will help to improve your depth of task accomplishment to use the Scratchpad to reflect and plan.
-The goal is to help you maintain a big picture as well as the progress of the task. Always refer to the Scratchpad when you plan the next step.
 
 # Lessons
 
-## Next.js Dynamic APIs
+- Always add 'use client' at the top of any file in src/app that uses useState, useEffect, or other React client hooks. This is required for Next.js App Router client components.
+- Always handle dynamic APIs (searchParams, cookies, headers) asynchronously in Next.js 15+.
+  - Use React.use() in Client Components to unwrap dynamic API Promises.
+  - Use await in Server Components to unwrap dynamic API Promises.
+  - Never access dynamic API properties directly without awaiting.
+- Use npx shadcn@latest init to install shadcn/ui. Avoid using shadcn-ui as it's deprecated.
+- Use npx shadcn@latest add [component] to add Shadcn UI components (NOT npx shadcn-ui@latest).
+- Always use pnpm as the package manager.
+- Navigation authorization should be handled server-side for immediate role knowledge.
+- Avoid client-side role fetching to prevent incorrect initial states.
+- Always use Next.js Image component (<Image />) from 'next/image' instead of HTML <img> tag for better performance and optimization.
+- TypeScript interfaces for handbook components are located in src/types/handbook.ts.
+- Always add null checks for optional props in React components and provide fallback UI to prevent runtime errors.
+- The project is already running on port 3000 - don't try to start it again.
 
-- Always handle dynamic APIs (searchParams, cookies, headers) asynchronously in Next.js 15+
-- Use React.use() in Client Components to unwrap dynamic API Promises
-- Use await in Server Components to unwrap dynamic API Promises
-- Never access dynamic API properties directly without awaiting
+# Interactive Task Loop with User Feedback
 
-Example for Server Components:
+1. **Check if `userinput.py` exists** in the root directory. If it doesn't exist, create it with:
 
-```typescript
-interface PageProps {
-  searchParams: Promise<{
-    id?: string;
-  }>;
-}
+   ```python
+   # userinput.py
+   user_input = input("prompt: ")
+   ```
 
-export default async function Page({ searchParams }: PageProps) {
-  const params = await searchParams;
-  // Now you can safely use params.id
-}
-```
+2. **Main Workflow**:
+   - Perform your assigned tasks.
+   - Run:
+     ```bash
+     python userinput.py
+     ```
+   - The terminal should be opened in the chat window itself.
+   - Read the user's input.
+   - Based on the input, perform the next set of tasks.
+   - Repeat the process.
 
-Example for Client Components:
+3. **Exit Condition**:
+   - If the user enters "stop" when prompted, exit the loop and terminate the process.
 
-```typescript
-"use client";
+# Instructions
 
-import { use } from "react";
+- If you find anything reusable in this project (e.g., version of a library, model name), especially about a fix to a mistake you made or a correction you received, note it in the `Lessons` section above so you will not make the same mistake again.
+- Use this file as a Scratchpad to organize your thoughts. When you receive a new task, review the content of the Scratchpad, clear old tasks if necessary, explain the task, and plan the steps you need to take. Use todo markers to indicate progress, e.g.:
+  - [X] Task 1
+  - [ ] Task 2
+- Update the progress of the task in the Scratchpad when you finish a subtask.
+- When you finish a milestone, use the Scratchpad to reflect and plan next steps.
+- Always refer to the Scratchpad when you plan the next step.
 
-interface PageProps {
-  searchParams: Promise<{
-    id?: string;
-  }>;
-}
+# NeonDB and .mdc Files
 
-export default function Page({ searchParams }: PageProps) {
-  const params = use(searchParams);
-  // Now you can safely use params.id
-}
-```
-
-## Cursor learned
-
-- follows Next.js's server-first pattern throughout the application
-- Next.js cookies need to be handled asynchronously with async/await
-- Always handle cookies asynchronously in Next.js 15+
-- Always use the updated cookieStore method in Next.js 15+
-- Use npx shadcn@latest add [component] to add Shadcn UI components (NOT npx shadcn-ui@latest)
-- Navigation authorization should be handled server-side for immediate role knowledge
-- Avoid client-side role fetching to prevent incorrect initial states
-- Always use Next.js Image component (<Image />) from 'next/image' instead of HTML <img> tag for better performance and optimization
-- TypeScript interfaces for handbook components are located in src/types/handbook.ts
-- Always add null checks for optional props in React components and provide fallback UI to prevent runtime errors
-- The project is already running on port 3000 - don't try to start it again
+- There is a `neondb.mdc` file and a `neonauth.mdc` file in the `.cursor/rules/` directory. These files are part of the project rules or configuration.
+- More `.mdc` files may be added in the future. Always check for and respect the presence and purpose of any `.mdc` files in the `.cursor/rules/` directory or elsewhere in the project.
 
 # Project Structure
 
@@ -132,10 +81,6 @@ Contains all TypeScript interfaces for the handbook feature:
 
 # General
 
-- Use always use npx shadcn@latest init to install shadcn/ui. Avoid using shadcn-ui as it's deprecated.
-- Use always use npx shadcn@latest add [component] to add a component to the project.
-- Always use pnpm as the package manager.
-
 You are an expert developer in TypeScript, Node.js, Next.js 15 App Router, React, Better-auth, GraphQL, Genql, Tailwind CSS, Radix UI, and Shadcn UI.
 
 Key Principles
@@ -159,8 +104,7 @@ JavaScript/TypeScript
 
 Error Handling and Validation
 
-- Prioritize error handling and edge cases:
-- Handle errors and edge cases at the beginning of functions.
+- Prioritize error handling and edge cases at the beginning of functions.
 - Use early returns for error conditions to avoid deeply nested if statements.
 - Place the happy path last in the function for improved readability.
 - Avoid unnecessary else statements; use if-return pattern instead.
@@ -202,21 +146,18 @@ React/Next.js
 - Use next-safe-action for all server actions.
 - Implement type-safe server actions with proper validation.
 - Handle errors gracefully and return appropriate responses.
-  Key Conventions
+
+Key Conventions
 
 1. Rely on Next.js App Router for state changes and routing.
 2. Prioritize Web Vitals (LCP, CLS, FID).
 3. Minimize 'use client' usage:
-
-- Prefer server components and Next.js SSR features.
-- Use 'use client' only for Web API access in small components.
-- Avoid using 'use client' for data fetching or state management.
-
+   - Prefer server components and Next.js SSR features.
+   - Use 'use client' only for Web API access in small components.
+   - Avoid using 'use client' for data fetching or state management.
 4. Follow the monorepo structure:
-
-- Place shared code in the 'packages' directory.
-- Keep app-specific code in the 'apps' directory.
-
+   - Place shared code in the 'packages' directory.
+   - Keep app-specific code in the 'apps' directory.
 5. Use Taskfile commands for development and deployment tasks.
 6. Adhere to the defined database schema and use enum tables for predefined values.
 
@@ -262,8 +203,7 @@ Documentation
 - Use JSDoc comments for functions and components to improve IDE intellisense.
 - Keep the README files up-to-date with setup instructions and project overview.
 
-Refer to Next.js documentation for Data Fetching, Rendering, and Routing best practices and to the
-Vercel AI SDK documentation and OpenAI/Anthropic API guidelines for best practices in AI integration.
+Refer to Next.js documentation for Data Fetching, Rendering, and Routing best practices and to the Vercel AI SDK documentation and OpenAI/Anthropic API guidelines for best practices in AI integration.
 
 # Cursor Development Rules & AI Collaboration Guide
 
