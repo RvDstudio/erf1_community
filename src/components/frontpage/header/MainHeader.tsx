@@ -8,29 +8,48 @@ import SmallHeader from "@/components/frontpage/header/SmallHeader";
 import TopBar from "@/components/frontpage/header/TopBar";
 import NavigationBar from "./NavigationBar";
 import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
-import { useSession } from '@/hooks/use-session'
-import dynamic from 'next/dynamic'
-const UserAvatar = dynamic(() => import('@/components/UserAvatar'), { ssr: false })
+import dynamic from "next/dynamic";
+const UserAvatar = dynamic(() => import("@/components/UserAvatar"), {
+  ssr: false,
+});
 
-const MainHeader = () => {
+interface MainHeaderProps {
+  session?: any;
+}
+
+function splitName(name: string): { firstName: string; lastName: string } {
+  if (!name) return { firstName: "", lastName: "" };
+  const parts = name.trim().split(" ");
+  if (parts.length === 1) return { firstName: parts[0], lastName: "" };
+  return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
+}
+
+const MainHeader = ({ session }: MainHeaderProps) => {
   const [showMain, setShowMain] = useState(true);
   const [showSmall, setShowSmall] = useState(false);
   const [isShrunk, setIsShrunk] = useState(false);
   const lastScrollY = useRef(0);
-  const { session, isLoading } = useSession()
-  console.log('HEADER SESSION:', session)
-  let name = ''
-  let image = undefined
-  let isLoggedIn = false
-  type UserObj = { name?: string; image?: string }
-  if (session && typeof session === 'object' && 'data' in session && session.data && typeof session.data === 'object') {
-    const data = session.data as { user?: UserObj }
-    if (data.user && typeof data.user === 'object') {
-      name = data.user.name || ''
-      image = data.user.image || undefined
-      isLoggedIn = !!name
+
+  let name = "";
+  let image = undefined;
+  let isLoggedIn = false;
+  type UserObj = { name?: string; image?: string };
+  if (
+    session &&
+    typeof session === "object" &&
+    "user" in session &&
+    session.user &&
+    typeof session.user === "object"
+  ) {
+    const data = session as { user?: UserObj };
+    if (data.user && typeof data.user === "object") {
+      name = data.user.name || "";
+      image = data.user.image || undefined;
+      isLoggedIn = !!name;
     }
   }
+
+  const { firstName, lastName } = splitName(name);
 
   useEffect(() => {
     function handleScroll() {
@@ -130,35 +149,36 @@ const MainHeader = () => {
               </div>
             </div>
 
-            {/* User or Call Us Section */}
-            {isLoading ? (
-              <div className="w-8 h-8 rounded-full bg-gray-400 animate-pulse mr-4" />
-            ) : isLoggedIn ? (
-              <div className="flex items-center mr-4 gap-2">
-                <UserAvatar name={name} image={image} />
-                <span className="text-white font-medium text-sm truncate max-w-[120px]">{name || '?'}</span>
-              </div>
-            ) : (
-              <div className="flex items-center mr-4">
-                <div className="bg-gray-800 rounded-full p-3 mr-3">
-                  <Phone className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-white text-xs font-bold">
-                    CALL US NOW:
+            <div className="flex items-center gap-3">
+              {/* User or Call Us Section */}
+              {isLoggedIn ? (
+                <>
+                  <UserAvatar name={name} image={image} />
+                  <span className="text-white font-medium text-sm truncate max-w-[120px] flex flex-col items-start">
+                    <span>{firstName}</span>
+                    {lastName && (
+                      <span className="text-xs text-gray-300">{lastName}</span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <div className="flex items-center">
+                  <div className="bg-gray-800 rounded-full p-3">
+                    <Phone className="h-6 w-6 text-white" />
                   </div>
-                  <div className="text-white text-xs">
-                    TOLL FREE: 0123-456-789
+                  <div className="ml-2">
+                    <div className="text-white text-xs font-bold">
+                      CALL US NOW:
+                    </div>
+                    <div className="text-white text-xs">
+                      TOLL FREE: 0123-456-789
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {/* Wishlist Icon */}
-            <WishlistIcon />
-
-            {/* Shopping Cart */}
-            <ShoppingCart />
+              )}
+              <WishlistIcon />
+              <ShoppingCart />
+            </div>
           </div>
         </div>
         <NavigationBar />
@@ -172,7 +192,7 @@ const MainHeader = () => {
           ${showSmall ? "translate-y-0" : "-translate-y-full"}
         `}
       >
-        <SmallHeader />
+        <SmallHeader session={session} />
       </div>
     </>
   );

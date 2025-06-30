@@ -1,24 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import TopBar from "@/components/frontpage/header/TopBar";
+import React from "react";
 import MainHeader from "@/components/frontpage/header/MainHeader";
 import NavigationBar from "@/components/frontpage/header/NavigationBar";
 
-const Header = () => {
-  const [hideTopBar, setHideTopBar] = useState(false);
+interface HeaderProps {
+  session?: any;
+}
 
-  useEffect(() => {
-    function handleScroll() {
-      setHideTopBar(window.scrollY > 30);
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const Header = ({ session }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50">
-      {!hideTopBar && <TopBar />}
-      <MainHeader />
+      <MainHeader session={session} />
       <NavigationBar />
     </header>
   );

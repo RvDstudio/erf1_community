@@ -3,12 +3,7 @@
 import Link from "next/link";
 import ShoppingCart from "@/components/frontpage/header/ShoppingCart";
 import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
-import {
-  User,
-  Menu,
-  Search,
-  Tractor,
-} from "lucide-react";
+import { User, Menu, Search, Tractor } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -18,27 +13,43 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import React from "react";
-import { useSession } from '@/hooks/use-session'
-import dynamic from 'next/dynamic'
-const UserAvatar = dynamic(() => import('@/components/UserAvatar'), { ssr: false })
+import dynamic from "next/dynamic";
+const UserAvatar = dynamic(() => import("@/components/UserAvatar"), {
+  ssr: false,
+});
 
-type UserObj = { name?: string; image?: string }
-function getUserFromSession(session: unknown): UserObj | undefined {
-  if (session && typeof session === 'object' && 'data' in session && session.data && typeof session.data === 'object') {
-    const data = session.data as { user?: UserObj }
-    if (data.user && typeof data.user === 'object') {
-      return data.user
-    }
-  }
-  return undefined
+type UserObj = { name?: string; image?: string };
+
+interface SmallHeaderProps {
+  session?: any;
 }
 
-export default function SmallHeader() {
-  const { session, isLoading } = useSession()
-  const user = getUserFromSession(session)
-  const name = user?.name || '?'
-  const image = user?.image || undefined
-  const isLoggedIn = !!user?.name
+function splitName(name: string): { firstName: string; lastName: string } {
+  if (!name) return { firstName: "", lastName: "" };
+  const parts = name.trim().split(" ");
+  if (parts.length === 1) return { firstName: parts[0], lastName: "" };
+  return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
+}
+
+export default function SmallHeader({ session }: SmallHeaderProps) {
+  let name = "";
+  let image = undefined;
+  let isLoggedIn = false;
+  if (
+    session &&
+    typeof session === "object" &&
+    "user" in session &&
+    session.user &&
+    typeof session.user === "object"
+  ) {
+    const data = session as { user?: UserObj };
+    if (data.user && typeof data.user === "object") {
+      name = data.user.name || "";
+      image = data.user.image || undefined;
+      isLoggedIn = !!name;
+    }
+  }
+  const { firstName, lastName } = splitName(name);
   return (
     <div className="fixed top-0 left-0 right-0 md:static w-full z-50 bg-[#374c69]">
       <div className="container mx-auto">
@@ -68,7 +79,9 @@ export default function SmallHeader() {
               <div className="bg-[#6699cc] rounded-full p-1 mr-2">
                 <Tractor className="h-6 w-6 text-white" />
               </div>
-              <span className="text-white font-bold text-lg">Erf1 Community</span>
+              <span className="text-white font-bold text-lg">
+                Erf1 Community
+              </span>
             </Link>
           </div>
 
@@ -94,14 +107,17 @@ export default function SmallHeader() {
             </div>
           </div>
 
-          {/* Icons on the right (always unauthenticated) */}
+          {/* Icons on the right */}
           <div className="flex items-center space-x-4">
-            {isLoading ? (
-              <div className="w-8 h-8 rounded-full bg-gray-400 animate-pulse" />
-            ) : isLoggedIn ? (
+            {isLoggedIn ? (
               <div className="flex items-center gap-2">
                 <UserAvatar name={name} image={image} />
-                <span className="text-white font-medium text-sm truncate max-w-[100px]">{name}</span>
+                <span className="text-white font-medium text-sm truncate max-w-[100px] flex flex-col items-start">
+                  <span>{firstName}</span>
+                  {lastName && (
+                    <span className="text-xs text-gray-300">{lastName}</span>
+                  )}
+                </span>
               </div>
             ) : (
               <Link href="/login" className="text-white hover:text-gray-300">
