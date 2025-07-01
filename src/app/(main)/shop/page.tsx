@@ -3,122 +3,8 @@
 import ShopCard, { ShopCardProps } from "@/components/shop/ShopCard";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import React, { useState } from "react";
-import { CartSheet } from '@/components/shop/CartSheet'
-
-const products: ShopCardProps[] = [
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/6_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/6_2.jpg",
-    category: "Dried Fruit",
-    title: "Mixed Nuts Berries Pack",
-    link: "/product-left-sidebar/1",
-    weight: "2kg",
-    price: "$45.00",
-    oldPrice: "$55.00",
-    isOnSale: true,
-    rating: 3,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/7_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/7_2.jpg",
-    category: "Snacks",
-    title: "Organic Trail Mix",
-    link: "/product-left-sidebar/2",
-    weight: "1kg",
-    price: "$30.00",
-    oldPrice: "$40.00",
-    isOnSale: false,
-    rating: 4,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/8_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/8_2.jpg",
-    category: "Nuts",
-    title: "Roasted Almonds",
-    link: "/product-left-sidebar/3",
-    weight: "500g",
-    price: "$20.00",
-    oldPrice: "$25.00",
-    isOnSale: true,
-    rating: 5,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/9_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/9_2.jpg",
-    category: "Seeds",
-    title: "Chia Seeds Pack",
-    link: "/product-left-sidebar/4",
-    weight: "250g",
-    price: "$10.00",
-    oldPrice: "$12.00",
-    isOnSale: false,
-    rating: 2,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/6_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/6_2.jpg",
-    category: "Dried Fruit",
-    title: "Mixed Nuts Berries Pack",
-    link: "/product-left-sidebar/1",
-    weight: "2kg",
-    price: "$45.00",
-    oldPrice: "$55.00",
-    isOnSale: true,
-    rating: 3,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/7_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/7_2.jpg",
-    category: "Snacks",
-    title: "Organic Trail Mix",
-    link: "/product-left-sidebar/2",
-    weight: "1kg",
-    price: "$30.00",
-    oldPrice: "$40.00",
-    isOnSale: false,
-    rating: 4,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/8_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/8_2.jpg",
-    category: "Nuts",
-    title: "Roasted Almonds",
-    link: "/product-left-sidebar/3",
-    weight: "500g",
-    price: "$20.00",
-    oldPrice: "$25.00",
-    isOnSale: true,
-    rating: 5,
-  },
-  {
-    image:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/9_1.jpg",
-    hoverImage:
-      "https://grabit-react-next.maraviyainfotech.com/assets/img/product-images/9_2.jpg",
-    category: "Seeds",
-    title: "Chia Seeds Pack",
-    link: "/product-left-sidebar/4",
-    weight: "250g",
-    price: "$10.00",
-    oldPrice: "$12.00",
-    isOnSale: false,
-    rating: 2,
-  },
-];
+import { CartSheet } from "@/components/shop/CartSheet";
+import { products } from "./products";
 
 const categories = [...Array.from(new Set(products.map((p) => p.category)))];
 
@@ -129,7 +15,7 @@ export default function ShopPage() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(150);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [cartOpen, setCartOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false);
 
   const filtered = selectedCategory
     ? products.filter((p) => p.category === selectedCategory)
@@ -148,7 +34,9 @@ export default function ShopPage() {
           <div className="mb-2">
             <h1 className="text-2xl font-bold text-gray-800">Shop</h1>
             <div className="mt-2 mb-4">
-              <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Shop" }]} />
+              <Breadcrumb
+                items={[{ label: "Home", href: "/" }, { label: "Shop" }]}
+              />
             </div>
           </div>
         </div>
@@ -219,7 +107,9 @@ export default function ShopPage() {
                       type="checkbox"
                       checked={selectedCategory === cat}
                       onChange={() =>
-                        setSelectedCategory(selectedCategory === cat ? null : cat)
+                        setSelectedCategory(
+                          selectedCategory === cat ? null : cat
+                        )
                       }
                       className="accent-[#374C69] rounded"
                       id={`cat-${cat}`}
@@ -264,9 +154,17 @@ export default function ShopPage() {
           {/* Product Grid */}
           <main className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filtered
-              .filter((p) => Number(p.price.replace(/[^\d.]/g, '')) >= minPrice && Number(p.price.replace(/[^\d.]/g, '')) <= maxPrice)
+              .filter(
+                (p) =>
+                  Number(p.price.replace(/[^\d.]/g, "")) >= minPrice &&
+                  Number(p.price.replace(/[^\d.]/g, "")) <= maxPrice
+              )
               .map((product, idx) => (
-                <ShopCard key={idx} {...product} onAddToCart={() => setCartOpen(true)} />
+                <ShopCard
+                  key={idx}
+                  {...product}
+                  onAddToCart={() => setCartOpen(true)}
+                />
               ))}
           </main>
         </div>
