@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight } from "lucide-react";
-import { Icon } from "@/components/shared/Icon";
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
+import { ChevronDown, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+import { Icon } from '@/components/shared/Icon';
 
 interface MenuItemProps {
   item: {
     label: string;
     icon: string;
     href?: string;
-    submenu?: MenuItemProps["item"][];
+    submenu?: MenuItemProps['item'][];
   };
   isCollapsed: boolean;
 }
@@ -27,7 +27,10 @@ const MenuItem = ({ item, isCollapsed }: MenuItemProps) => {
 
   const content = (
     <>
-      <Icon name={item.icon} className="w-5 h-5 min-w-5 min-h-5 flex-shrink-0" />
+      <Icon
+        className="h-5 min-h-5 w-5 min-w-5 flex-shrink-0"
+        name={item.icon}
+      />
       {!isCollapsed && (
         <>
           <span className="ml-3 flex-1 text-left">{item.label}</span>
@@ -45,45 +48,45 @@ const MenuItem = ({ item, isCollapsed }: MenuItemProps) => {
     <div className="relative">
       {item.href ? (
         <Link
-          href={item.href}
           className={clsx(
-            "w-full flex items-center py-2 rounded-lg transition-colors",
+            'flex w-full items-center rounded-lg py-2 transition-colors',
             {
-              "justify-center": isCollapsed,
-              "px-4": !isCollapsed,
-              "text-gray-200 border border-[#4a6386] bg-[#6699cc]": isActive,
-              "text-gray-200 hover:bg-[#6699cc] border border-transparent hover:border hover:border-[#4a6386]":
+              'justify-center': isCollapsed,
+              'px-4': !isCollapsed,
+              'border border-[#4a6386] bg-[#6699cc] text-gray-200': isActive,
+              'border border-transparent text-gray-200 hover:border hover:border-[#4a6386] hover:bg-[#6699cc]':
                 !isActive,
-            },
+            }
           )}
+          href={item.href}
         >
           {content}
         </Link>
       ) : (
         <button
-          onClick={() => hasSubmenu && setIsOpen(!isOpen)}
           className={clsx(
-            "w-full flex items-center py-2 rounded-lg transition-colors",
+            'flex w-full items-center rounded-lg py-2 transition-colors',
             {
-              "justify-center": isCollapsed,
-              "px-4": !isCollapsed,
-              "bg-[#6699cc] text-gray-200": isActive,
-              "text-gray-200 hover:bg-[#6699cc] border border-transparent hover:border hover:border-[#4a6386]":
+              'justify-center': isCollapsed,
+              'px-4': !isCollapsed,
+              'bg-[#6699cc] text-gray-200': isActive,
+              'border border-transparent text-gray-200 hover:border hover:border-[#4a6386] hover:bg-[#6699cc]':
                 !isActive,
-            },
+            }
           )}
+          onClick={() => hasSubmenu && setIsOpen(!isOpen)}
         >
           {content}
         </button>
       )}
       {hasSubmenu && isOpen && !isCollapsed && (
-        <div className="ml-4 mt-1 space-y-1">
+        <div className="mt-1 ml-4 space-y-1">
           {item.submenu &&
             item.submenu.map((subItem) => (
               <MenuItem
-                key={subItem.label}
-                item={subItem}
                 isCollapsed={isCollapsed}
+                item={subItem}
+                key={subItem.label}
               />
             ))}
         </div>

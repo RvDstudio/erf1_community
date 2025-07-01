@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
+import type { Session } from "better-auth/types";
 import MainHeader from "@/components/frontpage/header/MainHeader";
 import NavigationBar from "@/components/frontpage/header/NavigationBar";
 
 interface HeaderProps {
-  session?: any;
+  session?: Session;
 }
 
 const Header = ({ session }: HeaderProps) => {

@@ -1,21 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
       {
-        hostname: "grabit-react-next.maraviyainfotech.com",
+        hostname: 'grabit-react-next.maraviyainfotech.com',
       },
       {
-        hostname: "lh3.googleusercontent.com",
+        hostname: 'lh3.googleusercontent.com',
       },
       {
-        hostname: "bbxbvkdtyrbquobhbhur.supabase.co",
+        hostname: 'bbxbvkdtyrbquobhbhur.supabase.co',
       },
       {
-        hostname: "github.com"
-      }
+        hostname: 'github.com',
+      },
     ],
   },
 };

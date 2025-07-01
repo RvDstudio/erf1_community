@@ -1,12 +1,12 @@
-import { Truck, Sprout, BadgePercent, DollarSign } from "lucide-react";
+import { BadgePercent, DollarSign, Sprout, Truck } from 'lucide-react';
 
 function ServiceFeatures() {
   return (
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 container mx-auto mb-10">
+    <div className="container mx-auto mb-10 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {/* Free Shipping */}
-      <div className="bg-white border border-gray-200 rounded-lg flex flex-col items-center justify-center p-8 text-center min-h-[180px]">
-        <Truck size={40} strokeWidth={1} className="text-emerald-500 mb-4" />
-        <h3 className="font-semibold text-lg text-gray-800 mb-2">
+      <div className="flex min-h-[180px] flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
+        <Truck className="mb-4 text-emerald-500" size={40} strokeWidth={1} />
+        <h3 className="mb-2 font-semibold text-gray-800 text-lg">
           Free Shipping
         </h3>
         <p className="text-gray-500 text-sm">
@@ -14,9 +14,9 @@ function ServiceFeatures() {
         </p>
       </div>
       {/* 24x7 Support */}
-      <div className="bg-white border border-gray-200 rounded-lg flex flex-col items-center justify-center p-8 text-center min-h-[180px]">
-        <Sprout size={40} strokeWidth={1} className="text-emerald-500 mb-4" />
-        <h3 className="font-semibold text-lg text-gray-800 mb-2">
+      <div className="flex min-h-[180px] flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
+        <Sprout className="mb-4 text-emerald-500" size={40} strokeWidth={1} />
+        <h3 className="mb-2 font-semibold text-gray-800 text-lg">
           24X7 Support
         </h3>
         <p className="text-gray-500 text-sm">
@@ -24,13 +24,13 @@ function ServiceFeatures() {
         </p>
       </div>
       {/* 30 Days Return */}
-      <div className="bg-white border border-gray-200 rounded-lg flex flex-col items-center justify-center p-8 text-center min-h-[180px]">
+      <div className="flex min-h-[180px] flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
         <BadgePercent
+          className="mb-4 text-emerald-500"
           size={40}
           strokeWidth={1}
-          className="text-emerald-500 mb-4"
         />
-        <h3 className="font-semibold text-lg text-gray-800 mb-2">
+        <h3 className="mb-2 font-semibold text-gray-800 text-lg">
           30 Days Return
         </h3>
         <p className="text-gray-500 text-sm">
@@ -38,13 +38,13 @@ function ServiceFeatures() {
         </p>
       </div>
       {/* Payment Secure */}
-      <div className="bg-white border border-gray-200 rounded-lg flex flex-col items-center justify-center p-8 text-center min-h-[180px]">
+      <div className="flex min-h-[180px] flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-8 text-center">
         <DollarSign
+          className="mb-4 text-emerald-500"
           size={40}
           strokeWidth={1}
-          className="text-emerald-500 mb-4"
         />
-        <h3 className="font-semibold text-lg text-gray-800 mb-2">
+        <h3 className="mb-2 font-semibold text-gray-800 text-lg">
           Payment Secure
         </h3>
         <p className="text-gray-500 text-sm">

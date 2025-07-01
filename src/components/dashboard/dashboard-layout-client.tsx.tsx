@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { TopBar } from "@/components/dashboard/TopBar";
-import { MobileSidebar } from "@/components/dashboard/MobileSidebar";
+import { useEffect, useState } from "react";
+import { MobileSidebar } from "@/components/dashboard/mobile-sidebar";
 import { Sidebar } from "@/components/dashboard/Sidebar";
+import { TopBar } from "@/components/dashboard/TopBar";
 
 export function DashboardLayoutClient({
   children,
@@ -34,7 +34,7 @@ export function DashboardLayoutClient({
         <Sidebar isCollapsed={isSidebarCollapsed} />
       </div>
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${
+        className={`flex flex-1 flex-col transition-all duration-300 ${
           isSidebarCollapsed ? "lg:ml-16" : "lg:ml-64"
         }`}
       >

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import { Search } from "lucide-react";
-import { MobileSidebar } from "./MobileSidebar";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { MobileSidebar } from "@/components/dashboard/mobile-sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,61 +35,66 @@ export const TopBar = ({
   };
 
   return (
-    <header className="bg-[#374c69]  h-16 px-6 flex items-center justify-between border-b border-[#4a6386] sticky top-0 w-full z-10 shadow-sm">
-      <div className="flex items-center flex-1 max-w-xl gap-4">
+    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between border-[#4a6386] border-b bg-[#374c69] px-6 shadow-sm">
+      <div className="flex max-w-xl flex-1 items-center gap-4">
         <MobileSidebar
           isOpen={isMobileSidebarOpen}
           onClose={() => setIsMobileSidebarOpen(false)}
         />
         <button
-          className="p-1 block lg:hidden text-white cursor-pointer"
-          onClick={() => setIsMobileSidebarOpen(true)}
           aria-label="Open Mobile Menu"
+          className="block cursor-pointer p-1 text-white lg:hidden"
+          onClick={() => setIsMobileSidebarOpen(true)}
+          type="button"
         >
           ☰
         </button>
         <button
-          className="p-1 hidden lg:block text-white cursor-pointer"
-          onClick={onToggleSidebar}
           aria-label="Toggle Sidebar"
+          className="hidden cursor-pointer p-1 text-white lg:block"
+          onClick={onToggleSidebar}
+          type="button"
         >
           ☰
         </button>
-        <div className="relative flex-1 ml-4 lg:ml-0">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-200 w-5 h-5" />
+        <div className="relative ml-4 flex-1 lg:ml-0">
+          <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-5 w-5 transform text-gray-200" />
           <input
-            type="text"
+            className="w-full rounded-lg border border-[#4a6386] bg-[#4a6386] py-2 pr-4 pl-10 text-[#a3adc2] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7a7a7a]"
             placeholder="Search anything here..."
-            className="w-full pl-10 pr-4 py-2 rounded-lg border bg-[#4a6386] border-[#4a6386] focus:outline-none focus:ring-2 focus:ring-[#7a7a7a] focus:border-transparent text-[#a3adc2]"
+            type="text"
           />
         </div>
       </div>
 
       <div className="flex items-center space-x-4">
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center space-x-2 px-2 py-1 hover:bg-[#4A6386] hover:text-white cursor-pointer bg-white border border-[#424242] rounded-lg focus:outline-none">
+          <DropdownMenuTrigger className="flex cursor-pointer items-center space-x-2 rounded-lg border border-[#424242] bg-white px-2 py-1 hover:bg-[#4A6386] hover:text-white focus:outline-none">
             {isPending ? (
-              <div className="w-8 h-8 rounded-full bg-[#424242] animate-pulse" />
+              <div className="h-8 w-8 animate-pulse rounded-full bg-[#424242]" />
             ) : (
               <Image
-                src={session?.user?.image || "/placeholder.png"}
                 alt={session?.user?.name || "Username"}
-                width={32}
+                className="h-8 w-8 rounded-full"
                 height={32}
-                className="w-8 h-8 rounded-full"
+                src={session?.user?.image || "/placeholder.png"}
+                width={32}
               />
             )}
-            <span className="text-sm font-medium text-black hover:text-white">
+            <span className="font-medium text-black text-sm hover:text-white">
               {isPending ? "Loading..." : session?.user?.name || "Guest"}
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-56 bg-[#4a6386] border border-[#4a6386] text-white"
+            className="w-56 border border-[#4a6386] bg-[#4a6386] text-white"
           >
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-[#424242]" />
-            <DropdownMenuItem className="hover:bg-[#424242]" onClick={() => router.push("/dashboard/profile")}>
+            <DropdownMenuItem
+              className="hover:bg-[#424242]"
+              onClick={() => router.push("/dashboard/profile")}
+            >
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem className="hover:bg-[#424242]">
@@ -100,8 +105,8 @@ export const TopBar = ({
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-[#424242]" />
             <DropdownMenuItem
+              className="cursor-pointer text-red-600"
               onClick={handleSignOut}
-              className="text-red-600 cursor-pointer"
             >
               Log out
             </DropdownMenuItem>

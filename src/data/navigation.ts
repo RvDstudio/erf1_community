@@ -1,4 +1,4 @@
-import { NavigationSection } from '../types/navigation';
+import type { NavigationSection } from '../types/navigation';
 
 export const navigationData: NavigationSection[] = [
   {
@@ -11,8 +11,8 @@ export const navigationData: NavigationSection[] = [
   {
     title: 'Web Apps',
     items: [
-      { 
-        label: 'Email', 
+      {
+        label: 'Email',
         icon: 'mail',
         submenu: [
           { label: 'Inbox', icon: 'inbox', href: '/email/inbox' },
@@ -35,5 +35,5 @@ export const navigationData: NavigationSection[] = [
       { label: 'Forms', icon: 'formInput', href: '/forms' },
       { label: 'UI Elements', icon: 'palette', href: '/ui-elements' },
     ],
-  }
+  },
 ];

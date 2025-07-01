@@ -40,4 +40,4 @@ export async function sendMagicLinkEmail({
     console.error('Error sending magic link email:', error);
     throw error;
   }
-} 
+}

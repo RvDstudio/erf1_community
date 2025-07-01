@@ -1,12 +1,11 @@
-import React from "react";
-import { Sidebar } from "./Sidebar";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from '@/components/ui/sheet';
+import { Sidebar } from './Sidebar';
 
 interface MobileSidebarProps {
   isOpen: boolean;
@@ -16,16 +15,19 @@ interface MobileSidebarProps {
 export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   return (
     <div className="lg:hidden">
-      <Sheet open={isOpen} onOpenChange={onClose}>
+      <Sheet onOpenChange={onClose} open={isOpen}>
         <SheetTrigger asChild>
-          <button className="fixed top-3 left-4 z-50 p-2 text-gray-500 rounded-md">
+          <button
+            className="fixed top-3 left-4 z-50 rounded-md p-2 text-gray-500"
+            type="button"
+          >
             ☰
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className="p-0 w-64">
+        <SheetContent className="w-64 p-0" side="left">
           <SheetTitle className="sr-only">Menu</SheetTitle>
           <SheetHeader>
-            <h2 className="text-lg font-bold px-4 py-2">Menu</h2>
+            <h2 className="px-4 py-2 font-bold text-lg">Menu</h2>
           </SheetHeader>
           <Sidebar isCollapsed={false} />
         </SheetContent>

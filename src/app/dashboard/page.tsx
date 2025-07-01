@@ -1,14 +1,3 @@
-import { Breadcrumbs } from "@/components/dashboard/Breadcrumbs";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   BarChart3,
   Calendar,
@@ -19,108 +8,119 @@ import {
   Settings,
   ShoppingCart,
   Users,
-} from "lucide-react";
-import React from "react";
+} from 'lucide-react';
+import React from 'react';
+import { Breadcrumbs } from '@/components/dashboard/Breadcrumbs';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function DashboardPage() {
-  const breadcrumbItems = [{ label: "Dashboard", href: "/dashboard" }];
+  const breadcrumbItems = [{ label: 'Dashboard', href: '/dashboard' }];
 
   return (
-    <div className="container mx-auto px-6 md:px-0 pb-8 ">
+    <div className="container mx-auto px-6 pb-8 md:px-0 ">
       <div className="mb-2">
         <Breadcrumbs items={breadcrumbItems} />
       </div>
 
-      <main className="flex-1 p-0 md:p-6 pt-0">
+      <main className="flex-1 p-0 pt-0 md:p-6">
         <Tabs defaultValue="overview">
           <div className="flex items-center justify-between">
-            <TabsList className="bg-[#2A2A2A] border border-[#424242]">
-              <TabsTrigger value="overview" className="text-[#7A7A7A]">
+            <TabsList className="border border-[#424242] bg-[#2A2A2A]">
+              <TabsTrigger className="text-[#7A7A7A]" value="overview">
                 Overview
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="text-[#7A7A7A]">
+              <TabsTrigger className="text-[#7A7A7A]" value="analytics">
                 Analytics
               </TabsTrigger>
-              <TabsTrigger value="reports" className="text-[#7A7A7A]">
+              <TabsTrigger className="text-[#7A7A7A]" value="reports">
                 Reports
               </TabsTrigger>
             </TabsList>
             <div className="flex items-center gap-2">
               <Button
-                variant="outline"
+                className="h-8 cursor-pointer border border-[#424242] bg-[#242424] text-[#7A7A7A] hover:border-[#424242] hover:bg-[#1d1d1d] hover:text-[#7A7A7A]"
                 size="sm"
-                className="h-8 bg-[#242424] border border-[#424242] text-[#7A7A7A] hover:bg-[#1d1d1d] hover:border-[#424242] hover:text-[#7A7A7A] cursor-pointer"
+                variant="outline"
               >
                 <Download className="mr-2 h-4 w-4" />
                 Download
               </Button>
             </div>
           </div>
-          <TabsContent value="overview" className="space-y-4 pt-4">
+          <TabsContent className="space-y-4 pt-4" value="overview">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-[#A0A0A0]">
+                  <CardTitle className="font-medium text-[#A0A0A0] text-sm">
                     Total Revenue
                   </CardTitle>
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-[#7A7A7A]">
+                  <div className="font-bold text-2xl text-[#7A7A7A]">
                     $45,231.89
                   </div>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-muted-foreground text-xs">
                     +20.1% from last month
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-[#A0A0A0]">
+                  <CardTitle className="font-medium text-[#A0A0A0] text-sm">
                     Subscriptions
                   </CardTitle>
                   <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-[#7A7A7A]">+2350</div>
-                  <p className="text-xs text-muted-foreground">
+                  <div className="font-bold text-2xl text-[#7A7A7A]">+2350</div>
+                  <p className="text-muted-foreground text-xs">
                     +180.1% from last month
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-[#A0A0A0]">
+                  <CardTitle className="font-medium text-[#A0A0A0] text-sm">
                     Sales
                   </CardTitle>
                   <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-[#7A7A7A]">
+                  <div className="font-bold text-2xl text-[#7A7A7A]">
                     +12,234
                   </div>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-muted-foreground text-xs">
                     +19% from last month
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-[#A0A0A0]">
+                  <CardTitle className="font-medium text-[#A0A0A0] text-sm">
                     Active Now
                   </CardTitle>
                   <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-[#7A7A7A]">+573</div>
-                  <p className="text-xs text-muted-foreground">
+                  <div className="font-bold text-2xl text-[#7A7A7A]">+573</div>
+                  <p className="text-muted-foreground text-xs">
                     +201 since last hour
                   </p>
                 </CardContent>
               </Card>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-              <Card className="bg-[#2A2A2A] lg:col-span-4 border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A] lg:col-span-4">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Recent Sales
@@ -137,7 +137,7 @@ export default function DashboardPage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-[#2A2A2A] lg:col-span-3 border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A] lg:col-span-3">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Recent Orders
@@ -155,8 +155,8 @@ export default function DashboardPage() {
                 </CardContent>
                 <CardFooter>
                   <Button
+                    className="w-full cursor-pointer border border-[#424242] bg-[#242424] text-[#7A7A7A] hover:border-[#424242] hover:bg-[#1d1d1d] hover:text-[#7A7A7A]"
                     variant="outline"
-                    className="w-full bg-[#242424] border border-[#424242] text-[#7A7A7A] hover:bg-[#1d1d1d] hover:border-[#424242] hover:text-[#7A7A7A] cursor-pointer"
                   >
                     View All Orders
                   </Button>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
               </Card>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-              <Card className="bg-[#2A2A2A] lg:col-span-4 border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A] lg:col-span-4">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0">
                   <div>
                     <CardTitle className="font-medium text-[#A0A0A0]">
@@ -176,9 +176,9 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <Button
-                      variant="outline"
+                      className="border border-[#424242] bg-[#242424] text-[#7A7A7A]"
                       size="sm"
-                      className="bg-[#242424] border border-[#424242] text-[#7A7A7A]"
+                      variant="outline"
                     >
                       <Calendar className="mr-2 h-4 w-4" />
                       Last 30 days
@@ -186,17 +186,17 @@ export default function DashboardPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-[300px] w-full rounded-md border border-dashed border-[#424242] bg-[#242424] flex items-center justify-center">
+                  <div className="flex h-[300px] w-full items-center justify-center rounded-md border border-[#424242] border-dashed bg-[#242424]">
                     <div className="flex flex-col items-center text-center">
-                      <BarChart3 className="h-10 w-10 text-muted-foreground mb-2" />
-                      <p className="text-sm text-muted-foreground">
+                      <BarChart3 className="mb-2 h-10 w-10 text-muted-foreground" />
+                      <p className="text-muted-foreground text-sm">
                         Performance chart visualization
                       </p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#2A2A2A] lg:col-span-3 border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A] lg:col-span-3">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Recent Notifications
@@ -210,34 +210,34 @@ export default function DashboardPage() {
                     {[
                       {
                         icon: Users,
-                        color: "text-blue-500",
-                        bg: "bg-blue-100",
-                        title: "New team member joined",
-                        time: "2 hours ago",
+                        color: 'text-blue-500',
+                        bg: 'bg-blue-100',
+                        title: 'New team member joined',
+                        time: '2 hours ago',
                       },
                       {
                         icon: CreditCard,
-                        color: "text-green-500",
-                        bg: "bg-green-100",
-                        title: "Subscription payment successful",
-                        time: "5 hours ago",
+                        color: 'text-green-500',
+                        bg: 'bg-green-100',
+                        title: 'Subscription payment successful',
+                        time: '5 hours ago',
                       },
                       {
                         icon: ShoppingCart,
-                        color: "text-yellow-500",
-                        bg: "bg-yellow-100",
-                        title: "New order received",
-                        time: "1 day ago",
+                        color: 'text-yellow-500',
+                        bg: 'bg-yellow-100',
+                        title: 'New order received',
+                        time: '1 day ago',
                       },
                       {
                         icon: Package,
-                        color: "text-red-500",
-                        bg: "bg-red-100",
-                        title: "Product out of stock",
-                        time: "2 days ago",
+                        color: 'text-red-500',
+                        bg: 'bg-red-100',
+                        title: 'Product out of stock',
+                        time: '2 days ago',
                       },
                     ].map((notification, i) => (
-                      <div key={i} className="flex items-start gap-4">
+                      <div className="flex items-start gap-4" key={i}>
                         <div
                           className={`flex h-9 w-9 items-center justify-center rounded-full ${notification.bg}`}
                         >
@@ -246,10 +246,10 @@ export default function DashboardPage() {
                           />
                         </div>
                         <div className="flex-1 space-y-1">
-                          <p className="text-sm font-medium leading-none text-[#7A7A7A]">
+                          <p className="font-medium text-[#7A7A7A] text-sm leading-none">
                             {notification.title}
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-muted-foreground text-xs">
                             {notification.time}
                           </p>
                         </div>
@@ -261,7 +261,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Quick Actions
@@ -273,15 +273,15 @@ export default function DashboardPage() {
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { icon: Users, label: "Add User" },
-                      { icon: Package, label: "New Product" },
-                      { icon: CreditCard, label: "Billing" },
-                      { icon: Settings, label: "Settings" },
+                      { icon: Users, label: 'Add User' },
+                      { icon: Package, label: 'New Product' },
+                      { icon: CreditCard, label: 'Billing' },
+                      { icon: Settings, label: 'Settings' },
                     ].map((action, i) => (
                       <Button
+                        className="h-20 cursor-pointer flex-col border border-[#424242] bg-[#242424] text-[#7A7A7A] hover:border-[#424242] hover:bg-[#1d1d1d] hover:text-[#7A7A7A]"
                         key={i}
                         variant="outline"
-                        className="h-20 flex-col bg-[#242424] border border-[#424242] text-[#7A7A7A] hover:bg-[#1d1d1d] hover:border-[#424242] hover:text-[#7A7A7A] cursor-pointer"
                       >
                         <action.icon className="mb-2 h-5 w-5" />
                         {action.label}
@@ -291,7 +291,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Upcoming Tasks
@@ -304,29 +304,29 @@ export default function DashboardPage() {
                   <div className="space-y-4">
                     {[
                       {
-                        title: "Team meeting",
-                        time: "10:00 AM",
+                        title: 'Team meeting',
+                        time: '10:00 AM',
                         completed: false,
                       },
                       {
-                        title: "Project review",
-                        time: "1:30 PM",
+                        title: 'Project review',
+                        time: '1:30 PM',
                         completed: false,
                       },
                       {
-                        title: "Client call",
-                        time: "3:00 PM",
+                        title: 'Client call',
+                        time: '3:00 PM',
                         completed: false,
                       },
                       {
-                        title: "Update documentation",
-                        time: "4:30 PM",
+                        title: 'Update documentation',
+                        time: '4:30 PM',
                         completed: true,
                       },
                     ].map((task, i) => (
-                      <div key={i} className="flex items-center gap-2">
+                      <div className="flex items-center gap-2" key={i}>
                         <div
-                          className={`h-5 w-5 rounded-full border ${task.completed ? "bg-primary border-primary" : "border-muted-foreground"} flex items-center justify-center`}
+                          className={`h-5 w-5 rounded-full border ${task.completed ? 'border-primary bg-primary' : 'border-muted-foreground'} flex items-center justify-center`}
                         >
                           {task.completed && (
                             <div className="h-2 w-2 rounded-full bg-white" />
@@ -334,11 +334,11 @@ export default function DashboardPage() {
                         </div>
                         <div className="flex-1">
                           <p
-                            className={`text-sm font-medium ${task.completed ? "line-through text-muted-foreground" : "text-[#7A7A7A]"}`}
+                            className={`font-medium text-sm ${task.completed ? 'text-muted-foreground line-through' : 'text-[#7A7A7A]'}`}
                           >
                             {task.title}
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-muted-foreground text-xs">
                             {task.time}
                           </p>
                         </div>
@@ -348,7 +348,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#2A2A2A] border border-[#424242]">
+              <Card className="border border-[#424242] bg-[#2A2A2A]">
                 <CardHeader>
                   <CardTitle className="font-medium text-[#A0A0A0]">
                     Team Activity
@@ -361,38 +361,38 @@ export default function DashboardPage() {
                   <div className="space-y-4">
                     {[
                       {
-                        user: "Alex",
-                        action: "created a new project",
-                        time: "Just now",
+                        user: 'Alex',
+                        action: 'created a new project',
+                        time: 'Just now',
                       },
                       {
-                        user: "Sarah",
-                        action: "completed 3 tasks",
-                        time: "1 hour ago",
+                        user: 'Sarah',
+                        action: 'completed 3 tasks',
+                        time: '1 hour ago',
                       },
                       {
-                        user: "Michael",
-                        action: "uploaded new files",
-                        time: "3 hours ago",
+                        user: 'Michael',
+                        action: 'uploaded new files',
+                        time: '3 hours ago',
                       },
                       {
-                        user: "Jessica",
-                        action: "invited 2 new members",
-                        time: "Yesterday",
+                        user: 'Jessica',
+                        action: 'invited 2 new members',
+                        time: 'Yesterday',
                       },
                     ].map((activity, i) => (
-                      <div key={i} className="flex items-start gap-4">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                      <div className="flex items-start gap-4" key={i}>
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 font-bold text-primary text-xs">
                           {activity.user.charAt(0)}
                         </div>
                         <div className="flex-1 space-y-1">
                           <p className="text-sm">
                             <span className="font-medium text-[#7A7A7A]">
                               {activity.user}
-                            </span>{" "}
+                            </span>{' '}
                             {activity.action}
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-muted-foreground text-xs">
                             {activity.time}
                           </p>
                         </div>
@@ -403,8 +403,8 @@ export default function DashboardPage() {
               </Card>
             </div>
           </TabsContent>
-          <TabsContent value="analytics" className="space-y-4 pt-4">
-            <Card className="bg-[#2A2A2A] border border-[#424242]">
+          <TabsContent className="space-y-4 pt-4" value="analytics">
+            <Card className="border border-[#424242] bg-[#2A2A2A]">
               <CardHeader>
                 <CardTitle>Analytics</CardTitle>
                 <CardDescription>
@@ -412,14 +412,14 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[400px] w-full rounded-md border border-dashed flex items-center justify-center text-muted-foreground">
+                <div className="flex h-[400px] w-full items-center justify-center rounded-md border border-dashed text-muted-foreground">
                   Analytics charts will appear here
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="reports" className="space-y-4 pt-4">
-            <Card className="bg-[#2A2A2A] border border-[#424242]">
+          <TabsContent className="space-y-4 pt-4" value="reports">
+            <Card className="border border-[#424242] bg-[#2A2A2A]">
               <CardHeader>
                 <CardTitle>Reports</CardTitle>
                 <CardDescription>
@@ -427,7 +427,7 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[400px] w-full rounded-md border border-dashed flex items-center justify-center text-muted-foreground">
+                <div className="flex h-[400px] w-full items-center justify-center rounded-md border border-dashed text-muted-foreground">
                   Reports will appear here
                 </div>
               </CardContent>

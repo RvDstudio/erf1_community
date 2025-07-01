@@ -1,4 +1,4 @@
-import { Banner } from "@/components/frontpage/Banner";
+import { Banner } from "@/components/frontpage/banner";
 import DealOfTheDay from "@/components/frontpage/DealOfTheDay";
 import Hero from "@/components/frontpage/hero/Hero";
 import { NewArrivals } from "@/components/frontpage/NewArrivals";

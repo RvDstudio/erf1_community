@@ -1,20 +1,23 @@
 // src\app\(site)\layout.tsx
-import Header from "@/components/frontpage/header/Header";
-import SmallHeader from "@/components/frontpage/header/SmallHeader";
-import Footer from "@/components/frontpage/footer/Footer";
-import { auth } from "@/lib/auth";
+
+import type { Session } from "better-auth/types";
 import { headers } from "next/headers";
+import Footer from "@/components/frontpage/footer/Footer";
+import Header from "@/components/frontpage/header/header";
+import SmallHeader from "@/components/frontpage/header/SmallHeader";
+import { auth } from "@/lib/auth";
 
 export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  let session = undefined;
+  let session: Session | undefined;
   try {
     const headersList = await headers();
-    session = await auth.api.getSession({ headers: headersList });
-  } catch (error) {
+    const sessionResult = await auth.api.getSession({ headers: headersList });
+    session = sessionResult?.session || undefined;
+  } catch {
     // ignore, session stays undefined
   }
   return (

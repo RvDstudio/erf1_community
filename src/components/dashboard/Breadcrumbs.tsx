@@ -1,5 +1,5 @@
-import React from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight } from 'lucide-react';
+import React from 'react';
 
 interface BreadcrumbsProps {
   items: { label: string; href: string }[];
@@ -7,20 +7,20 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
   return (
-    <nav className="flex" aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb" className="flex">
       <ol className="flex items-center space-x-2">
         {items.map((item, index) => (
-          <li key={item.href} className="flex items-center">
+          <li className="flex items-center" key={item.href}>
             {index > 0 && (
-              <ChevronRight className="w-4 h-4 text-[#A0A0A0] mx-2" />
+              <ChevronRight className="mx-2 h-4 w-4 text-[#A0A0A0]" />
             )}
             <a
-              href={item.href}
               className={`text-sm ${
                 index === items.length - 1
-                  ? "text-[#A0A0A0] font-medium"
-                  : "text-[#A0A0A0] hover:text-[#A0A0A0]"
+                  ? 'font-medium text-[#A0A0A0]'
+                  : 'text-[#A0A0A0] hover:text-[#A0A0A0]'
               }`}
+              href={item.href}
             >
               {item.label}
             </a>

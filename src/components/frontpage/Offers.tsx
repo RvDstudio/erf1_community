@@ -1,52 +1,52 @@
-import { Button } from "../ui/button";
+import { Button } from '../ui/button';
 
 function Offers() {
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 container mx-auto mb-10">
+    <div className="container mx-auto mt-6 mb-10 grid w-full grid-cols-1 gap-6 md:grid-cols-2">
       {/* Offer 1 */}
       <div
-        className="relative rounded-xl overflow-hidden min-h-[280px] flex justify-end items-center bg-cover bg-center shadow-sm"
-        style={{ backgroundImage: "url(/images/2.jpg)" }}
+        className="relative flex min-h-[280px] items-center justify-end overflow-hidden rounded-xl bg-center bg-cover shadow-sm"
+        style={{ backgroundImage: 'url(/images/2.jpg)' }}
       >
         {/* Overlay for readability */}
-        <div className="relative z-10 flex flex-col items-end h-full p-8 max-w-[60%] text-right">
-          <span className="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-md shadow mb-4 w-max">
+        <div className="relative z-10 flex h-full max-w-[60%] flex-col items-end p-8 text-right">
+          <span className="mb-4 w-max rounded-md bg-gray-200 px-3 py-1 font-semibold text-gray-700 text-xs shadow">
             70% Off
           </span>
-          <h2 className="text-3xl font-bold text-gray-800 mb-2 leading-tight">
+          <h2 className="mb-2 font-bold text-3xl text-gray-800 leading-tight">
             Tasty Snack
             <br />& Fastfood
           </h2>
-          <p className="text-gray-500 mb-4">
+          <p className="mb-4 text-gray-500">
             The Flavor Of
             <br />
             Something Special
           </p>
-          <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold text-sm shadow">
+          <Button className="rounded bg-green-600 px-6 py-2 font-semibold text-sm text-white shadow hover:bg-green-700">
             Shop Now
           </Button>
         </div>
       </div>
       {/* Offer 2 */}
       <div
-        className="relative rounded-xl overflow-hidden min-h-[280px] flex justify-end items-center bg-cover bg-center shadow-sm"
-        style={{ backgroundImage: "url(/images/3.jpg)" }}
+        className="relative flex min-h-[280px] items-center justify-end overflow-hidden rounded-xl bg-center bg-cover shadow-sm"
+        style={{ backgroundImage: 'url(/images/3.jpg)' }}
       >
         {/* Overlay for readability */}
-        <div className="relative z-10 flex flex-col items-end h-full p-8 max-w-[60%] text-right">
-          <span className="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-md shadow mb-4 w-max">
+        <div className="relative z-10 flex h-full max-w-[60%] flex-col items-end p-8 text-right">
+          <span className="mb-4 w-max rounded-md bg-gray-200 px-3 py-1 font-semibold text-gray-700 text-xs shadow">
             50% Off
           </span>
-          <h2 className="text-3xl font-bold text-gray-800 mb-2 leading-tight">
+          <h2 className="mb-2 font-bold text-3xl text-gray-800 leading-tight">
             Fresh Fruits
             <br />& Veggies
           </h2>
-          <p className="text-gray-500 mb-4">
+          <p className="mb-4 text-gray-500">
             A Healthy Meal For
             <br />
             Every One
           </p>
-          <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold text-sm shadow">
+          <Button className="rounded bg-green-600 px-6 py-2 font-semibold text-sm text-white shadow hover:bg-green-700">
             Shop Now
           </Button>
         </div>

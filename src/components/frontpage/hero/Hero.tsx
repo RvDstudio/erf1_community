@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const slides = [
   {
-    title: "Explore fresh & juicy fruits",
-    subtitle: "Starting at $ 29.99",
-    image: "/images/hero1.jpg",
-    cta: "Shop Now",
+    title: 'Explore fresh & juicy fruits',
+    subtitle: 'Starting at $ 29.99',
+    image: '/images/hero1.jpg',
+    cta: 'Shop Now',
   },
   {
-    title: "Delicious homemade pies",
-    subtitle: "From $ 19.99",
-    image: "/images/hero2.jpg",
-    cta: "Order Now",
+    title: 'Delicious homemade pies',
+    subtitle: 'From $ 19.99',
+    image: '/images/hero2.jpg',
+    cta: 'Order Now',
   },
   {
-    title: "Organic berries & more",
-    subtitle: "Fresh deals every day",
-    image: "/images/hero1.jpg",
-    cta: "See Offers",
+    title: 'Organic berries & more',
+    subtitle: 'Fresh deals every day',
+    image: '/images/hero1.jpg',
+    cta: 'See Offers',
   },
 ];
 
@@ -36,7 +36,11 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 5000,
   adaptiveHeight: true,
-  beforeChange: (oldIndex: number, newIndex: number, setCurrent: (idx: number) => void) => {
+  beforeChange: (
+    oldIndex: number,
+    newIndex: number,
+    setCurrent: (idx: number) => void
+  ) => {
     setCurrent(newIndex);
   },
 };
@@ -52,37 +56,35 @@ export default function Hero() {
 
   return (
     <section
-      className="container mx-auto rounded-2xl shadow-sm p-0 md:p-0 mb-8 relative overflow-hidden min-h-[600px] flex items-center"
+      className="container relative mx-auto mb-8 flex min-h-[600px] items-center overflow-hidden rounded-2xl p-0 shadow-sm md:p-0"
       style={{
         backgroundImage: `url(${slides[current].image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        transition: "background-image 0.5s ease-in-out",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        transition: 'background-image 0.5s ease-in-out',
       }}
     >
       <Slider {...sliderSettings} className="w-full">
         {slides.map((slide, idx) => (
           <div key={idx}>
-            <div className="flex flex-col md:flex-row items-center min-h-[350px]">
+            <div className="flex min-h-[350px] flex-col items-center md:flex-row">
               {/* Left: Text with slide-in animation */}
               <div
-                className={`flex-1 max-w-xl p-6 md:p-12 transition-all duration-700 ease-out
-                  ${current === idx ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}
-                `}
+                className={`max-w-xl flex-1 p-6 transition-all duration-700 ease-out md:p-12 ${current === idx ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'} `}
               >
-                <div className="text-green-600 font-semibold text-lg mb-2">
+                <div className="mb-2 font-semibold text-green-600 text-lg">
                   {slide.subtitle}
                 </div>
-                <h1 className="text-4xl md:text-5xl font-extrabold text-[#374c69] mb-6 leading-tight drop-shadow">
+                <h1 className="mb-6 font-extrabold text-4xl text-[#374c69] leading-tight drop-shadow md:text-5xl">
                   {slide.title}
                 </h1>
-                <button className="bg-[#374c69] hover:bg-[#2c3a50] text-white font-semibold px-6 py-3 rounded-md text-lg flex items-center gap-2 transition">
+                <button className="flex items-center gap-2 rounded-md bg-[#374c69] px-6 py-3 font-semibold text-lg text-white transition hover:bg-[#2c3a50]">
                   {slide.cta} <span aria-hidden>»</span>
                 </button>
               </div>
               {/* Right: Spacer for layout on large screens */}
-              <div className="flex-1 hidden md:block" />
+              <div className="hidden flex-1 md:block" />
             </div>
           </div>
         ))}

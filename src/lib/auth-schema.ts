@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const formSchema = z.object({
   name: z
@@ -14,11 +14,11 @@ export const formSchema = z.object({
 
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters long" })
-    .max(50, { message: "Password cannot exceed 50 characters" })
+    .min(8, { message: 'Password must be at least 8 characters long' })
+    .max(50, { message: 'Password cannot exceed 50 characters' }),
 });
 
 export const signInFormSchema = formSchema.pick({
   email: true,
-  password: true
-})
+  password: true,
+});

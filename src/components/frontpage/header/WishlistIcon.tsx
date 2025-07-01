@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Heart } from "lucide-react";
-import Link from "next/link";
-import { useWishlistStore, WishlistItem } from "@/hooks/use-wishlist";
+import { Heart } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
+import { useWishlistStore, type WishlistItem } from '@/hooks/use-wishlist';
 
 export default function WishlistIcon() {
   const itemCount = useWishlistStore(
@@ -12,19 +12,19 @@ export default function WishlistIcon() {
 
   return (
     <Link
-      href="/wishlist"
       className="flex items-center text-left text-white hover:text-gray-300"
+      href="/wishlist"
     >
-      <div className="relative bg-gray-800 hover:bg-gray-700 rounded-md p-2 mr-3">
+      <div className="relative mr-3 rounded-md bg-gray-800 p-2 hover:bg-gray-700">
         <Heart className="h-5 w-5" />
         {itemCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
+          <span className="-top-1 -right-1 absolute flex h-4 w-4 items-center justify-center rounded-full bg-red-500 font-bold text-white text-xs">
             {itemCount}
           </span>
         )}
       </div>
       <div className="hidden md:block">
-        <div className="text-xs font-bold">MY WISHLIST</div>
+        <div className="font-bold text-xs">MY WISHLIST</div>
         <div className="text-xs">{itemCount} item(s)</div>
       </div>
     </Link>

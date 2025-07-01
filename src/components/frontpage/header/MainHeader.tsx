@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
-import { Search, Phone, Tractor } from "lucide-react";
-import ShoppingCart from "@/components/frontpage/header/ShoppingCart";
-import Link from "next/link";
-import SmallHeader from "@/components/frontpage/header/SmallHeader";
-import TopBar from "@/components/frontpage/header/TopBar";
-import NavigationBar from "./NavigationBar";
-import WishlistIcon from "@/components/frontpage/header/WishlistIcon";
-import dynamic from "next/dynamic";
-const UserAvatar = dynamic(() => import("@/components/UserAvatar"), {
+import { Phone, Search, Tractor } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
+import ShoppingCart from '@/components/frontpage/header/ShoppingCart';
+import SmallHeader from '@/components/frontpage/header/SmallHeader';
+import TopBar from '@/components/frontpage/header/TopBar';
+import WishlistIcon from '@/components/frontpage/header/WishlistIcon';
+import NavigationBar from './NavigationBar';
+
+const UserAvatar = dynamic(() => import('@/components/UserAvatar'), {
   ssr: false,
 });
 
@@ -18,10 +19,10 @@ interface MainHeaderProps {
 }
 
 function splitName(name: string): { firstName: string; lastName: string } {
-  if (!name) return { firstName: "", lastName: "" };
-  const parts = name.trim().split(" ");
-  if (parts.length === 1) return { firstName: parts[0], lastName: "" };
-  return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
+  if (!name) return { firstName: '', lastName: '' };
+  const parts = name.trim().split(' ');
+  if (parts.length === 1) return { firstName: parts[0], lastName: '' };
+  return { firstName: parts[0], lastName: parts.slice(1).join(' ') };
 }
 
 const MainHeader = ({ session }: MainHeaderProps) => {
@@ -30,20 +31,20 @@ const MainHeader = ({ session }: MainHeaderProps) => {
   const [isShrunk, setIsShrunk] = useState(false);
   const lastScrollY = useRef(0);
 
-  let name = "";
-  let image = undefined;
+  let name = '';
+  let image;
   let isLoggedIn = false;
   type UserObj = { name?: string; image?: string };
   if (
     session &&
-    typeof session === "object" &&
-    "user" in session &&
+    typeof session === 'object' &&
+    'user' in session &&
     session.user &&
-    typeof session.user === "object"
+    typeof session.user === 'object'
   ) {
     const data = session as { user?: UserObj };
-    if (data.user && typeof data.user === "object") {
-      name = data.user.name || "";
+    if (data.user && typeof data.user === 'object') {
+      name = data.user.name || '';
       image = data.user.image || undefined;
       isLoggedIn = !!name;
     }
@@ -67,10 +68,10 @@ const MainHeader = ({ session }: MainHeaderProps) => {
       }
       lastScrollY.current = currentScrollY;
     }
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -78,33 +79,29 @@ const MainHeader = ({ session }: MainHeaderProps) => {
     <>
       {/* Main Header */}
       <div
-        className={`
-          fixed top-0 left-0 w-full z-40
-          transition-transform duration-300
-          ${showMain ? "translate-y-0" : "-translate-y-full"}
-        `}
+        className={`fixed top-0 left-0 z-40 w-full transition-transform duration-300 ${showMain ? 'translate-y-0' : '-translate-y-full'} `}
         style={{
-          boxShadow: isShrunk ? "0 2px 8px rgba(0,0,0,0.08)" : undefined,
+          boxShadow: isShrunk ? '0 2px 8px rgba(0,0,0,0.08)' : undefined,
         }}
       >
         <TopBar />
 
         <div
-          className={`bg-[#374c69] border-t border-[#415978] px-4 transition-all duration-300 ${
-            isShrunk ? "py-1" : "py-4"
+          className={`border-[#415978] border-t bg-[#374c69] px-4 transition-all duration-300 ${
+            isShrunk ? 'py-1' : 'py-4'
           }`}
         >
-          <div className="container mx-auto flex justify-between items-center">
+          <div className="container mx-auto flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center py-4">
+            <Link className="flex items-center py-4" href="/">
               <div
-                className={`bg-[#6699cc] rounded-full mr-2 transition-all duration-300 ${
-                  isShrunk ? "p-1" : "p-2"
+                className={`mr-2 rounded-full bg-[#6699cc] transition-all duration-300 ${
+                  isShrunk ? 'p-1' : 'p-2'
                 }`}
               >
                 <div
-                  className={`text-white font-bold transition-all duration-300 ${
-                    isShrunk ? "text-lg" : "text-xl"
+                  className={`font-bold text-white transition-all duration-300 ${
+                    isShrunk ? 'text-lg' : 'text-xl'
                   }`}
                 >
                   <Tractor className="h-6 w-6 text-white" />
@@ -112,15 +109,15 @@ const MainHeader = ({ session }: MainHeaderProps) => {
               </div>
               <div>
                 <div
-                  className={`text-white font-bold transition-all duration-300 ${
-                    isShrunk ? "text-lg" : "text-2xl"
+                  className={`font-bold text-white transition-all duration-300 ${
+                    isShrunk ? 'text-lg' : 'text-2xl'
                   }`}
                 >
                   Erf1 Community
                 </div>
                 <div
                   className={`text-[#BCBDC7] transition-all duration-300 ${
-                    isShrunk ? "text-[10px]" : "text-xs"
+                    isShrunk ? 'text-[10px]' : 'text-xs'
                   }`}
                 >
                   Shop all you want
@@ -129,20 +126,20 @@ const MainHeader = ({ session }: MainHeaderProps) => {
             </Link>
 
             {/* Search Bar */}
-            <div className="flex-grow max-w-xl mx-4">
+            <div className="mx-4 max-w-xl flex-grow">
               <div className="flex">
                 <div className="w-1/3">
-                  <select className="w-full h-10 px-3 rounded-l-md border-r border-gray-700 focus:outline-none bg-gray-800 text-[#BCBDC7] pr-1">
+                  <select className="h-10 w-full rounded-l-md border-gray-700 border-r bg-gray-800 px-3 pr-1 text-[#BCBDC7] focus:outline-none">
                     <option>All Categories</option>
                   </select>
                 </div>
-                <div className="w-2/3 relative flex">
+                <div className="relative flex w-2/3">
                   <input
-                    type="text"
+                    className="h-10 w-full bg-gray-800 px-3 text-[#BCBDC7] focus:outline-none"
                     placeholder="Enter keywords to search..."
-                    className="w-full h-10 px-3 focus:outline-none bg-gray-800 text-[#BCBDC7]"
+                    type="text"
                   />
-                  <button className="bg-[#6699cc] hover:bg-[#6699cc]/80 text-white px-4 rounded-r-md cursor-pointer">
+                  <button className="cursor-pointer rounded-r-md bg-[#6699cc] px-4 text-white hover:bg-[#6699cc]/80">
                     <Search className="h-5 w-5" />
                   </button>
                 </div>
@@ -153,21 +150,21 @@ const MainHeader = ({ session }: MainHeaderProps) => {
               {/* User or Call Us Section */}
               {isLoggedIn ? (
                 <>
-                  <UserAvatar name={name} image={image} />
-                  <span className="text-white font-medium text-sm truncate max-w-[120px] flex flex-col items-start">
+                  <UserAvatar image={image} name={name} />
+                  <span className="flex max-w-[120px] flex-col items-start truncate font-medium text-sm text-white">
                     <span>{firstName}</span>
                     {lastName && (
-                      <span className="text-xs text-gray-300">{lastName}</span>
+                      <span className="text-gray-300 text-xs">{lastName}</span>
                     )}
                   </span>
                 </>
               ) : (
                 <div className="flex items-center">
-                  <div className="bg-gray-800 rounded-full p-3">
+                  <div className="rounded-full bg-gray-800 p-3">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div className="ml-2">
-                    <div className="text-white text-xs font-bold">
+                    <div className="font-bold text-white text-xs">
                       CALL US NOW:
                     </div>
                     <div className="text-white text-xs">
@@ -186,11 +183,7 @@ const MainHeader = ({ session }: MainHeaderProps) => {
 
       {/* Small Header */}
       <div
-        className={`
-          fixed top-0 left-0 w-full z-50
-          transition-transform duration-300
-          ${showSmall ? "translate-y-0" : "-translate-y-full"}
-        `}
+        className={`fixed top-0 left-0 z-50 w-full transition-transform duration-300 ${showSmall ? 'translate-y-0' : '-translate-y-full'} `}
       >
         <SmallHeader session={session} />
       </div>

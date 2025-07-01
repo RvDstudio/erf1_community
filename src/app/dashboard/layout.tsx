@@ -1,7 +1,7 @@
-import { DashboardLayoutClient } from "@/components/dashboard/DashboardLayoutClient";
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { DashboardLayoutClient } from '@/components/dashboard/DashboardLayoutClient';
+import { auth } from '@/lib/auth';
 
 export default async function DashboardLayout({
   children,
@@ -15,11 +15,12 @@ export default async function DashboardLayout({
     });
     console.log('session :', session);
     if (!session) {
-      redirect("/sign-in");
+      redirect('/sign-in');
     }
   } catch (error: unknown) {
-    if (error instanceof Error && error.message !== "NEXT_REDIRECT") console.error("Auth error:", error);
-    redirect("/sign-in");
+    if (error instanceof Error && error.message !== 'NEXT_REDIRECT')
+      console.error('Auth error:', error);
+    redirect('/sign-in');
   }
 
   return (

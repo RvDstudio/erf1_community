@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import ShopCard, { ShopCardProps } from "@/components/shop/ShopCard";
-import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import React, { useState } from "react";
-import { CartSheet } from "@/components/shop/CartSheet";
-import { products } from "./products";
+import React, { useState } from 'react';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { CartSheet } from '@/components/shop/CartSheet';
+import ShopCard, { ShopCardProps } from '@/components/shop/ShopCard';
+import { products } from './products';
 
 const categories = [...Array.from(new Set(products.map((p) => p.category)))];
 
-const brands = ["Frito Lay", "Nespresso", "Oreo", "Quaker", "Welch's"];
+const brands = ['Frito Lay', 'Nespresso', 'Oreo', 'Quaker', "Welch's"];
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -32,91 +32,91 @@ export default function ShopPage() {
       <div className="min-h-screen py-10 pt-0">
         <div className="container mx-auto">
           <div className="mb-2">
-            <h1 className="text-2xl font-bold text-gray-800">Shop</h1>
+            <h1 className="font-bold text-2xl text-gray-800">Shop</h1>
             <div className="mt-2 mb-4">
               <Breadcrumb
-                items={[{ label: "Home", href: "/" }, { label: "Shop" }]}
+                items={[{ label: 'Home', href: '/' }, { label: 'Shop' }]}
               />
             </div>
           </div>
         </div>
         <div className="container mx-auto flex gap-8">
           {/* Sidebar */}
-          <aside className="w-72 hidden md:block space-y-6">
+          <aside className="hidden w-72 space-y-6 md:block">
             {/* Price Filter */}
-            <div className="border border-[#eeeeee] rounded-md p-6 bg-white">
-              <h3 className="font-bold text-lg text-gray-700 mb-4">
+            <div className="rounded-md border border-[#eeeeee] bg-white p-6">
+              <h3 className="mb-4 font-bold text-gray-700 text-lg">
                 Price Filter
               </h3>
               <hr className="-mx-6 mb-4 border border-[#eeeeee]" />
-              <div className="flex items-center gap-4 mb-4">
+              <div className="mb-4 flex items-center gap-4">
                 <div className="flex-1">
-                  <label className="block text-xs text-gray-500 mb-1">
+                  <label className="mb-1 block text-gray-500 text-xs">
                     Min price
                   </label>
                   <input
-                    type="number"
-                    className="w-full border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none"
-                    value={minPrice}
-                    min={0}
+                    className="w-full rounded border border-gray-200 px-2 py-1 text-sm focus:outline-none"
                     max={maxPrice}
+                    min={0}
                     onChange={(e) => setMinPrice(Number(e.target.value))}
+                    type="number"
+                    value={minPrice}
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-xs text-gray-500 mb-1">
+                  <label className="mb-1 block text-gray-500 text-xs">
                     Max price
                   </label>
                   <input
-                    type="number"
-                    className="w-full border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none"
-                    value={maxPrice}
-                    min={minPrice}
+                    className="w-full rounded border border-gray-200 px-2 py-1 text-sm focus:outline-none"
                     max={150}
+                    min={minPrice}
                     onChange={(e) => setMaxPrice(Number(e.target.value))}
+                    type="number"
+                    value={maxPrice}
                   />
                 </div>
               </div>
               <input
-                type="range"
-                min={0}
+                className="mb-2 w-full accent-[#374C69]"
                 max={150}
-                value={maxPrice}
+                min={0}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full accent-[#374C69] mb-2"
+                type="range"
+                value={maxPrice}
               />
-              <div className="flex items-center justify-between mt-2">
-                <span className="text-sm text-gray-600">
+              <div className="mt-2 flex items-center justify-between">
+                <span className="text-gray-600 text-sm">
                   Price: ${minPrice} — ${maxPrice}
                 </span>
-                <button className="bg-[#374C69] text-white px-6 py-2 rounded font-semibold text-sm hover:bg-[#25344a] transition">
+                <button className="rounded bg-[#374C69] px-6 py-2 font-semibold text-sm text-white transition hover:bg-[#25344a]">
                   Filter
                 </button>
               </div>
             </div>
             {/* Categories */}
-            <div className="border border-[#eeeeee] rounded-md p-6 bg-white">
-              <h3 className="font-bold text-lg text-gray-700 mb-4">
+            <div className="rounded-md border border-[#eeeeee] bg-white p-6">
+              <h3 className="mb-4 font-bold text-gray-700 text-lg">
                 Product Categories
               </h3>
               <hr className="-mx-6 mb-4 border border-[#eeeeee]" />
               <ul className="space-y-3">
                 {categories.map((cat) => (
-                  <li key={cat} className="flex items-center gap-2">
+                  <li className="flex items-center gap-2" key={cat}>
                     <input
-                      type="checkbox"
                       checked={selectedCategory === cat}
+                      className="rounded accent-[#374C69]"
+                      id={`cat-${cat}`}
                       onChange={() =>
                         setSelectedCategory(
                           selectedCategory === cat ? null : cat
                         )
                       }
-                      className="accent-[#374C69] rounded"
-                      id={`cat-${cat}`}
+                      type="checkbox"
                     />
                     <label
+                      className="cursor-pointer text-gray-700 text-sm"
                       htmlFor={`cat-${cat}`}
-                      className="text-gray-700 text-sm cursor-pointer"
                     >
                       {cat}
                     </label>
@@ -125,24 +125,24 @@ export default function ShopPage() {
               </ul>
             </div>
             {/* Brands */}
-            <div className="border border-[#eeeeee] rounded-md p-6 bg-white">
-              <h3 className="font-bold text-lg text-gray-700 mb-4">
+            <div className="rounded-md border border-[#eeeeee] bg-white p-6">
+              <h3 className="mb-4 font-bold text-gray-700 text-lg">
                 Select Brands
               </h3>
               <hr className="-mx-6 mb-4 border border-[#eeeeee]" />
               <ul className="space-y-3">
                 {brands.map((brand) => (
-                  <li key={brand} className="flex items-center gap-2">
+                  <li className="flex items-center gap-2" key={brand}>
                     <input
-                      type="checkbox"
                       checked={selectedBrands.includes(brand)}
-                      onChange={() => handleBrandChange(brand)}
-                      className="accent-[#374C69] rounded"
+                      className="rounded accent-[#374C69]"
                       id={`brand-${brand}`}
+                      onChange={() => handleBrandChange(brand)}
+                      type="checkbox"
                     />
                     <label
+                      className="cursor-pointer text-gray-700 text-sm"
                       htmlFor={`brand-${brand}`}
-                      className="text-gray-700 text-sm cursor-pointer"
                     >
                       {brand}
                     </label>
@@ -152,12 +152,12 @@ export default function ShopPage() {
             </div>
           </aside>
           {/* Product Grid */}
-          <main className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <main className="grid flex-1 grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {filtered
               .filter(
                 (p) =>
-                  Number(p.price.replace(/[^\d.]/g, "")) >= minPrice &&
-                  Number(p.price.replace(/[^\d.]/g, "")) <= maxPrice
+                  Number(p.price.replace(/[^\d.]/g, '')) >= minPrice &&
+                  Number(p.price.replace(/[^\d.]/g, '')) <= maxPrice
               )
               .map((product, idx) => (
                 <ShopCard
@@ -169,7 +169,7 @@ export default function ShopPage() {
           </main>
         </div>
       </div>
-      <CartSheet open={cartOpen} onOpenChange={setCartOpen} />
+      <CartSheet onOpenChange={setCartOpen} open={cartOpen} />
     </>
   );
 }

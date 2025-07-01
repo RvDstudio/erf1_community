@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { auth } from '@/lib/auth';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export default async function AuthGuard({ children }: AuthGuardProps) {
   });
 
   if (!session) {
-    redirect("/sign-in");
+    redirect('/sign-in');
   }
 
   return <>{children}</>;

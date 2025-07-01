@@ -41,9 +41,9 @@ export const useSession = () => {
 
 export const signOut = async () => {
   try {
-    await fetch("/api/auth/signout", { method: "POST" });
-    window.location.href = "/sign-in";
+    await fetch('/api/auth/signout', { method: 'POST' });
+    window.location.href = '/sign-in';
   } catch (error) {
-    console.error("Failed to sign out:", error);
+    console.error('Failed to sign out:', error);
   }
-}; 
+};

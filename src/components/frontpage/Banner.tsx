@@ -4,26 +4,29 @@ import Image from "next/image";
 
 function Banner() {
   return (
-    <section className="relative container mx-auto h-[40vw] min-h-[300px] max-h-[500px] flex items-center justify-end overflow-hidden rounded-xl shadow-lg  mb-10">
+    <section className="container relative mx-auto mb-10 flex h-[40vw] max-h-[400px] min-h-[300px] items-center justify-end overflow-hidden rounded-xl shadow-lg">
       {/* Banner Image */}
       <Image
-        src="/images/banner.jpg"
         alt="Banner"
+        className="z-0 object-cover object-center"
         fill
         priority
-        className="object-cover object-center z-0"
         sizes="100vw"
+        src="/images/banner.jpg"
       />
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-end justify-center text-right px-4 pr-0 md:pr-16 w-full max-w-2xl">
-        <h1 className="text-3xl md:text-5xl font-bold text-[#4b5966] drop-shadow-lg mb-4">
+      <div className="relative z-20 flex w-full max-w-2xl flex-col items-end justify-center px-4 pr-0 text-right md:pr-16">
+        <h1 className="mb-4 font-bold text-3xl text-[#4b5966] drop-shadow-lg md:text-5xl">
           Fresh Fruits & Vegetables
         </h1>
-        <p className="text-lg md:text-2xl text-[#4b5966] mb-6 max-w-2xl">
+        <p className="mb-6 max-w-2xl text-[#4b5966] text-lg md:text-2xl">
           Discover exclusive deals, connect with others, and enjoy a better
           shopping experience
         </p>
-        <button className="bg-[#689BCD] text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-200 transition">
+        <button
+          className="rounded-full bg-[#689BCD] px-6 py-3 font-semibold text-white shadow transition hover:bg-gray-200"
+          type="button"
+        >
           Shop Now
         </button>
       </div>

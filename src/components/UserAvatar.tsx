@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function UserAvatar({
   name,
@@ -10,17 +10,17 @@ export default function UserAvatar({
   image?: string;
 }) {
   return (
-    <div className="flex items-center justify-center w-8 h-8">
+    <div className="flex h-8 w-8 items-center justify-center">
       {image ? (
         <Image
-          src={image}
-          alt={name || "?"}
-          className="object-cover w-full h-full rounded-md"
-          width={32}
+          alt={name || '?'}
+          className="h-full w-full rounded-md object-cover"
           height={32}
+          src={image}
+          width={32}
         />
       ) : (
-        <span className="text-white font-bold">{name ? name[0] : "?"}</span>
+        <span className="font-bold text-white">{name ? name[0] : '?'}</span>
       )}
     </div>
   );
