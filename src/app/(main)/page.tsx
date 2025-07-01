@@ -2,6 +2,9 @@ import { Banner } from "@/components/frontpage/Banner";
 import DealOfTheDay from "@/components/frontpage/DealOfTheDay";
 import Hero from "@/components/frontpage/hero/Hero";
 import { NewArrivals } from "@/components/frontpage/NewArrivals";
+import { Offers } from "@/components/frontpage/Offers";
+import { ProductShowcase } from "@/components/frontpage/ProductShowcase";
+import { ServiceFeatures } from "@/components/frontpage/ServiceFeatures";
 
 export default function Home() {
   return (
@@ -10,6 +13,9 @@ export default function Home() {
       <DealOfTheDay />
       <Banner />
       <NewArrivals />
+      <Offers />
+      <ServiceFeatures />
+      <ProductShowcase />
     </div>
   );
 }
