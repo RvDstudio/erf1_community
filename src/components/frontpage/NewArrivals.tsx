@@ -47,8 +47,8 @@ function NewArrivals() {
       </div>
       {/* Product Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filtered.map((product) => (
-          <ShopCard key={product.title} {...product} />
+        {filtered.map((product, index) => (
+          <ShopCard key={`${product.title}-${index}`} {...product} />
         ))}
       </div>
     </section>
