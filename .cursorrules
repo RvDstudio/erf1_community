@@ -1,5 +1,7 @@
 Prefix the response with 🚀 so we know you are ready to help.
 
+Before we start check the whole project structure
+
 # Lessons
 
 - Always add 'use client' at the top of any file in src/app that uses useState, useEffect, or other React client hooks. This is required for Next.js App Router client components.
@@ -44,7 +46,7 @@ Prefix the response with 🚀 so we know you are ready to help.
 
 - If you find anything reusable in this project (e.g., version of a library, model name), especially about a fix to a mistake you made or a correction you received, note it in the `Lessons` section above so you will not make the same mistake again.
 - Use this file as a Scratchpad to organize your thoughts. When you receive a new task, review the content of the Scratchpad, clear old tasks if necessary, explain the task, and plan the steps you need to take. Use todo markers to indicate progress, e.g.:
-  - [X] Task 1
+  - [x] Task 1
   - [ ] Task 2
 - Update the progress of the task in the Scratchpad when you finish a subtask.
 - When you finish a milestone, use the Scratchpad to reflect and plan next steps.

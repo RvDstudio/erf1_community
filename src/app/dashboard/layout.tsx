@@ -1,7 +1,7 @@
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { DashboardLayoutClient } from '@/components/dashboard/DashboardLayoutClient';
-import { auth } from '@/lib/auth';
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { DashboardLayoutClient } from "@/components/dashboard/dashboard-layout-client.tsx";
+import { auth } from "@/lib/auth";
 
 export default async function DashboardLayout({
   children,
@@ -13,18 +13,18 @@ export default async function DashboardLayout({
     const session = await auth.api.getSession({
       headers: headersList,
     });
-    console.log('session :', session);
+    console.log("session :", session);
     if (!session) {
-      redirect('/sign-in');
+      redirect("/sign-in");
     }
   } catch (error: unknown) {
-    if (error instanceof Error && error.message !== 'NEXT_REDIRECT')
-      console.error('Auth error:', error);
-    redirect('/sign-in');
+    if (error instanceof Error && error.message !== "NEXT_REDIRECT")
+      console.error("Auth error:", error);
+    redirect("/sign-in");
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-[#F5F5F5]">
       <DashboardLayoutClient>{children}</DashboardLayoutClient>
     </div>
   );

@@ -45,7 +45,7 @@ export function DashboardLayoutClient({
           isOpen={isMobileSidebarOpen}
           onClose={() => setIsMobileSidebarOpen(false)}
         />
-        <main className="flex-1 p-8">{children}</main>
+        <main className="flex-1 p-8 pt-0">{children}</main>
       </div>
     </>
   );

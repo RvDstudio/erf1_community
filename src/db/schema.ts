@@ -9,6 +9,20 @@ export const user = pgTable('user', {
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
   isAnonymous: boolean('is_anonymous').default(false),
+  
+  // Additional profile fields
+  firstName: text('first_name'),
+  lastName: text('last_name'),
+  phone: text('phone'),
+  bio: text('bio'),
+  role: text('role'),
+  location: text('location'),
+  
+  // Address fields
+  country: text('country'),
+  cityState: text('city_state'),
+  postalCode: text('postal_code'),
+  taxId: text('tax_id'),
 });
 
 export const session = pgTable('session', {
