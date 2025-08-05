@@ -11,9 +11,7 @@
     "db:pull": "npx drizzle-kit pull",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
@@ -54,7 +52,6 @@
     "@babel/core": "^7.26.10",
     "@babel/preset-typescript": "^7.27.0",
     "@better-auth/cli": "^1.2.5",
-    "@biomejs/biome": "2.0.5",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

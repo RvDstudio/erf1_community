@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { ChevronDown } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 export default function NavigationBar() {
   return (
@@ -70,13 +70,13 @@ export default function NavigationBar() {
         <div className="flex items-center gap-2">
           <Link
             className="block px-4 py-3 text-[#BCBDC7] hover:text-[#6699cc]"
-            href="/login"
+            href="/sign-in"
           >
             Login
           </Link>
           <Link
             className="block rounded border border-[#6699cc] px-4 py-3 text-[#6699cc] hover:text-[#8a6232]"
-            href="/signup"
+            href="/sign-up"
           >
             Sign Up
           </Link>

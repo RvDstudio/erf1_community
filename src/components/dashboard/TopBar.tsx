@@ -35,7 +35,7 @@ export const TopBar = ({
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between border-[#05443b] border-b bg-[#022326] px-6 shadow-sm">
+    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between border-sidebar-border border-b bg-[#374C69] px-6 shadow-sm">
       <div className="flex max-w-xl flex-1 items-center gap-4">
         <MobileSidebar
           isOpen={isMobileSidebarOpen}
@@ -58,9 +58,9 @@ export const TopBar = ({
           ☰
         </button>
         <div className="relative ml-4 flex-1 lg:ml-0">
-          <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-5 w-5 transform text-gray-200" />
+          <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-5 w-5 transform" />
           <input
-            className="w-full rounded-lg border border-[#05443b] bg-[#03322B] py-2 pr-4 pl-10 text-[#a3adc2] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7a7a7a]"
+            className="w-full rounded-lg border border-[#05443b] bg-white py-2 pr-4 pl-10 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7a7a7a]"
             placeholder="Search anything here..."
             type="text"
           />

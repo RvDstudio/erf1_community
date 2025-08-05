@@ -19,29 +19,6 @@ Before we start check the whole project structure
 - Always add null checks for optional props in React components and provide fallback UI to prevent runtime errors.
 - The project is already running on port 3000 - don't try to start it again.
 
-# Interactive Task Loop with User Feedback
-
-1. **Check if `userinput.py` exists** in the root directory. If it doesn't exist, create it with:
-
-   ```python
-   # userinput.py
-   user_input = input("prompt: ")
-   ```
-
-2. **Main Workflow**:
-   - Perform your assigned tasks.
-   - Run:
-     ```bash
-     python userinput.py
-     ```
-   - The terminal should be opened in the chat window itself.
-   - Read the user's input.
-   - Based on the input, perform the next set of tasks.
-   - Repeat the process.
-
-3. **Exit Condition**:
-   - If the user enters "stop" when prompted, exit the loop and terminate the process.
-
 # Instructions
 
 - If you find anything reusable in this project (e.g., version of a library, model name), especially about a fix to a mistake you made or a correction you received, note it in the `Lessons` section above so you will not make the same mistake again.

@@ -1,10 +1,10 @@
-import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { nextCookies } from 'better-auth/next-js';
-import { anonymous, magicLink, openAPI } from 'better-auth/plugins';
-import { db } from '@/db/drizzle';
-import { schema } from '@/db/schema';
-import { sendMagicLinkEmail } from './email';
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { nextCookies } from "better-auth/next-js";
+import { anonymous, magicLink, openAPI } from "better-auth/plugins";
+import { db } from "@/db/drizzle";
+import { schema } from "@/db/schema";
+import { sendMagicLinkEmail } from "./email";
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -12,17 +12,13 @@ export const auth = betterAuth({
   },
   socialProviders: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-    },
-    github: {
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     },
   },
 
   database: drizzleAdapter(db, {
-    provider: 'pg',
+    provider: "pg",
     schema,
   }),
   plugins: [
@@ -32,8 +28,8 @@ export const auth = betterAuth({
         try {
           await sendMagicLinkEmail({ email, url });
         } catch (error) {
-          console.error('Failed to send magic link email:', error);
-          throw new Error('Failed to send magic link email');
+          console.error("Failed to send magic link email:", error);
+          throw new Error("Failed to send magic link email");
         }
       },
     }),

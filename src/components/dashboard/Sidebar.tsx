@@ -1,4 +1,4 @@
-import { Boxes, Tractor } from "lucide-react";
+import { Boxes } from "lucide-react";
 import MenuItem from "@/components/dashboard/MenuItem";
 import { navigationData } from "@/data/navigation";
 import type { NavigationSection } from "@/types/navigation";
@@ -13,12 +13,12 @@ export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
   return (
     <TooltipProvider delayDuration={100}>
       <aside
-        className={`fixed top-0 left-0 z-0 h-screen border-[#05443b] border-r bg-[#022326] transition-all duration-300 ${
+        className={`fixed top-0 left-0 z-0 bg-sidebar-primary h-screen border-sidebar-border  border-r transition-all duration-300 ${
           isCollapsed ? "w-16" : "w-64"
         }`}
       >
         <div
-          className={`border-[#05443b] border-b p-4 py-2 ${
+          className={`border-sidebar-border border-b p-4 py-2 ${
             isCollapsed ? "flex items-center justify-center" : ""
           }`}
         >
@@ -46,8 +46,8 @@ export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
                   className="h-6 min-h-6 w-6 min-w-6 flex-shrink-0 text-white"
                   name="shopping-bag"
                 />
-                <span className="ml-3 font-bold text-2xl text-white">
-                  Q <span className="font-extralight">| Editor</span>
+                <span className="ml-3 font-normal text-xl text-white">
+                  Erf 1 Zuivel & <span className="font-extralight"> Meer</span>
                 </span>
               </>
             )}

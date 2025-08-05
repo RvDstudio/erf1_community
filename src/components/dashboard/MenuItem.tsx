@@ -35,7 +35,7 @@ const MenuItem = ({ item, isCollapsed }: MenuItemProps) => {
       <Icon
         className={clsx(
           "h-5 min-h-5 w-5 min-w-5 flex-shrink-0",
-          isActive && "text-[#44C57C]"
+          isActive && "text-[#374c69]"
         )}
         name={item.icon}
       />
@@ -59,8 +59,8 @@ const MenuItem = ({ item, isCollapsed }: MenuItemProps) => {
         {
           "justify-center": isCollapsed,
           "px-4": !isCollapsed,
-          "border border-[#05443b] bg-[#03322B] text-gray-200": isActive,
-          "border border-transparent text-gray-200 hover:border hover:border-[#05443b] hover:bg-[#03322B]":
+          "bg-sidebar-foreground text-gray-200": isActive,
+          "border border-transparent text-gray-200 hover:border hover:bg-sidebar-foreground/80":
             !isActive,
         }
       )}
@@ -75,8 +75,8 @@ const MenuItem = ({ item, isCollapsed }: MenuItemProps) => {
         {
           "justify-center": isCollapsed,
           "px-4": !isCollapsed,
-          "border-[#05443b] bg-[#03322B] text-gray-200": isActive,
-          "border border-transparent text-gray-200 hover:border hover:border-[#3f3f42] hover:bg-[#2C2C2E]":
+          "bg-sidebar-foreground text-gray-200": isActive,
+          "border border-transparent text-gray-200 hover:border  hover:bg-sidebar-foreground/80":
             !isActive,
         }
       )}
