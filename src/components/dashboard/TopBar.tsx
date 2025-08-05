@@ -69,7 +69,7 @@ export const TopBar = ({
 
       <div className="flex items-center space-x-4">
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex cursor-pointer items-center space-x-2 rounded-lg border border-[#424242] bg-white px-2 py-1 hover:bg-[#4A6386] hover:text-white focus:outline-none">
+          <DropdownMenuTrigger className="flex cursor-pointer items-center space-x-2 rounded-lg border border-[#4B6383] bg-[#6699cc] px-2 py-1 hover:bg-[#4A6386] hover:text-white focus:outline-none">
             {isPending ? (
               <div className="h-8 w-8 animate-pulse rounded-full bg-[#424242]" />
             ) : (
@@ -81,7 +81,7 @@ export const TopBar = ({
                 width={32}
               />
             )}
-            <span className="font-medium text-black text-sm hover:text-white">
+            <span className="font-medium text-sm text-white">
               {isPending ? "Loading..." : session?.user?.name || "Guest"}
             </span>
           </DropdownMenuTrigger>
