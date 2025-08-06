@@ -29,6 +29,27 @@
       "when": 1754425781261,
       "tag": "0003_mixed_wolfpack",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1754472280174,
+      "tag": "0004_tricky_shocker",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1754472812276,
+      "tag": "0005_nappy_multiple_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1754503365818,
+      "tag": "0006_loving_photon",
+      "breakpoints": true
     }
   ]
 }

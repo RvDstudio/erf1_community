@@ -1,0 +1,1 @@
+ALTER TABLE "product" ADD COLUMN "is_deal_of_the_day" boolean NOT NULL DEFAULT false;

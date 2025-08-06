@@ -34,6 +34,101 @@ Before we start check the whole project structure
 - There is a `neondb.mdc` file and a `neonauth.mdc` file in the `.cursor/rules/` directory. These files are part of the project rules or configuration.
 - More `.mdc` files may be added in the future. Always check for and respect the presence and purpose of any `.mdc` files in the `.cursor/rules/` directory or elsewhere in the project.
 
+## NeonDB Data Fetching Pattern
+
+### Server Actions for Database Operations
+
+- Create server actions in `src/server/` directory for all database operations
+- Use the established pattern from `src/server/products.ts` for fetching data from NeonDB
+- Always include proper error handling and data transformation
+
+### Database Connection Setup
+
+```typescript
+// src/db/drizzle.ts - Database connection
+import { config } from "dotenv";
+import { drizzle } from "drizzle-orm/neon-http";
+
+config({ path: ".env" });
+export const db = drizzle(process.env.DATABASE_URL!);
+```
+
+### Server Action Pattern
+
+```typescript
+// src/server/[entity].ts - Server action template
+"use server";
+
+import { db } from "@/db/drizzle";
+import { [entity] } from "@/db/schema";
+import { desc } from "drizzle-orm";
+
+export async function get[Entity]s() {
+  try {
+    const [entities] = await db.select().from([entity]).orderBy(desc([entity].createdAt));
+
+    // Transform database data to match component interface
+    return [entities].map((item) => ({
+      id: item.id,
+      // Map other fields as needed
+    }));
+  } catch (error) {
+    console.error("Error fetching [entities]:", error);
+    return [];
+  }
+}
+```
+
+### Server Component Data Fetching
+
+```typescript
+// src/app/[route]/page.tsx - Server component
+import { get[Entity]s } from "@/server/[entity]";
+
+export default async function [Entity]Page() {
+  const [entities] = await get[Entity]s();
+
+  return (
+    <[Entity]Client [entities]={[entities]} />
+  );
+}
+```
+
+### Client Component for Interactivity
+
+```typescript
+// src/components/[entity]/[Entity]Client.tsx - Client component
+"use client";
+
+import React, { useState } from "react";
+import type { [Entity]Props } from "@/components/[entity]/[Entity]Card";
+
+interface [Entity]ClientProps {
+  [entities]: [Entity]Props[];
+}
+
+export default function [Entity]Client({ [entities] }: [Entity]ClientProps) {
+  const [filtered[Entities], setFiltered[Entities]] = useState([entities]);
+
+  // Handle filtering, sorting, and other interactive features
+
+  return (
+    <div>
+      {/* Render filtered data */}
+    </div>
+  );
+}
+```
+
+### Key Principles for NeonDB Integration
+
+- Always use server actions for database operations
+- Transform database data to match component interfaces
+- Handle errors gracefully with fallback empty arrays
+- Use server components for initial data fetching
+- Use client components for interactive features
+- Maintain proper TypeScript interfaces for data transformation
+
 # Project Structure
 
 ## Types

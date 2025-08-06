@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, integer, decimal } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -61,9 +61,31 @@ export const verification = pgTable("verification", {
   ),
 });
 
+export const product = pgTable("product", {
+  id: text("id").primaryKey(),
+  image: text("image").notNull(),
+  hoverImage: text("hover_image").notNull(),
+  category: text("category").notNull(),
+  title: text("title").notNull(),
+  link: text("link").notNull(),
+  weight: text("weight").notNull(),
+  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
+  oldPrice: decimal("old_price", { precision: 10, scale: 2 }),
+  isOnSale: boolean("is_on_sale").$defaultFn(() => false).notNull(),
+  isDealOfTheDay: boolean("is_deal_of_the_day").$defaultFn(() => false).notNull(),
+  rating: integer("rating").notNull(),
+  createdAt: timestamp("created_at")
+    .$defaultFn(() => /* @__PURE__ */ new Date())
+    .notNull(),
+  updatedAt: timestamp("updated_at")
+    .$defaultFn(() => /* @__PURE__ */ new Date())
+    .notNull(),
+});
+
 export const schema = {
   user,
   session,
   account,
   verification,
+  product,
 };

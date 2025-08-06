@@ -1,13 +1,13 @@
-import { Tractor } from 'lucide-react';
-import React from 'react';
+import { Tractor } from "lucide-react";
+import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-[#374c69] dark:bg-gray-900">
+    <footer className="bg-[#374c69]">
       <div className="container mx-auto space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 font-bold text-2xl text-[#6699cc] dark:text-teal-300">
+            <div className="flex items-center gap-2 font-bold text-2xl text-[#6699cc]">
               <Tractor className="h-6 w-6 text-white " />
               Erf1 Community
             </div>
@@ -138,9 +138,7 @@ function Footer() {
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
             <div>
-              <p className="font-medium text-[#6699cc] dark:text-white">
-                Services
-              </p>
+              <p className="font-medium text-[#6699cc] ">Services</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
@@ -191,9 +189,7 @@ function Footer() {
             </div>
 
             <div>
-              <p className="font-medium text-[#6699cc] dark:text-white">
-                Company
-              </p>
+              <p className="font-medium text-[#6699cc] ">Company</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
@@ -226,9 +222,7 @@ function Footer() {
             </div>
 
             <div>
-              <p className="font-medium text-[#6699cc] dark:text-white">
-                Helpful Links
-              </p>
+              <p className="font-medium text-[#6699cc] ">Helpful Links</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
@@ -261,9 +255,7 @@ function Footer() {
             </div>
 
             <div>
-              <p className="font-medium text-[#6699cc] dark:text-white">
-                Legal
-              </p>
+              <p className="font-medium text-[#6699cc] ">Legal</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>

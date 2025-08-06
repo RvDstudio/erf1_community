@@ -1,4 +1,4 @@
-import { Boxes } from "lucide-react";
+import { Boxes, Tractor } from "lucide-react";
 import MenuItem from "@/components/dashboard/MenuItem";
 import { navigationData } from "@/data/navigation";
 import type { NavigationSection } from "@/types/navigation";
@@ -27,7 +27,7 @@ export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="flex items-center justify-center">
-                    <Boxes
+                    <Tractor
                       className="h-6 min-h-6 w-6 min-w-6 flex-shrink-0 text-white"
                       name="shopping-bag"
                     />
@@ -42,7 +42,7 @@ export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
               </Tooltip>
             ) : (
               <>
-                <Boxes
+                <Tractor
                   className="h-6 min-h-6 w-6 min-w-6 flex-shrink-0 text-white"
                   name="shopping-bag"
                 />
